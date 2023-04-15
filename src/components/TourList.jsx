@@ -71,8 +71,6 @@ const Button = styled.button`
 `
 
 const TourList = ({handleClick}) => {
-
-
     return (
         <motion.div
             initial={{opacity: 0}}
@@ -82,7 +80,7 @@ const TourList = ({handleClick}) => {
             <Container>
                 <Wrapper>
                     {Tours.map((tour) => (
-                        <Tour key={tour.id} onClick={() => handleClick(tour.id, 'tour')}>
+                        <Tour key={tour.id}>
                             <Image src={tour.img}/>
                             <Title>{tour.title}</Title>
                             <Price>Cena: {tour.price} PLN</Price>
@@ -97,5 +95,4 @@ const TourList = ({handleClick}) => {
         </motion.div>
     );
 };
-
 export default TourList;

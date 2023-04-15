@@ -25,6 +25,7 @@ const HomePage = styled.div`
   flex-direction: column;
   padding: 12rem 0 0 0;
   align-items: center;
+  margin-top: 8rem;
   color: white;
   font-size: 3rem;
   font-weight: 600;

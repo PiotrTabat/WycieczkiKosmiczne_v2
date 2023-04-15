@@ -5,11 +5,19 @@ import { FaBars, FaShoppingCart } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
+  position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
   padding: 0.5rem 4rem;
   background-color: black;
   color: white !important;
   z-index: ${({isOpen}) => (isOpen ? "0" : "100")};
   opacity: 0.8;
+    transition: all 0.2s ease;
+    @media screen and (max-width: 768px){
+        padding: 0.5rem 2rem;
+    }
 `;
 const Wrapper = styled.div`
   display: flex;
@@ -52,7 +60,7 @@ const Mobile = styled.div`
 const MenuItem = styled.div`
   font-size: 20px;
   cursor: pointer;
-  margin-left: 15px;
+  margin-left: 25px;
   text-transform: uppercase;
   font-weight: 400;
   transition: 0.2s all ease-in-out;
