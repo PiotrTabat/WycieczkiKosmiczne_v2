@@ -1,6 +1,6 @@
 import React from 'react'
 import {motion} from 'framer-motion';
-import {Accessories, Tours} from '../data';
+import {Accessories} from '../data';
 import {useParams} from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -14,26 +14,27 @@ const Container = styled.div`
 const Wrapper = styled.div`
   padding: 1rem 4rem;
   background-color: #000000df;
-  height: 90%;
+  height: auto;
   width: 70%;
+  display: flex;
   flex-direction: column;
   align-items: center;
   margin: 10px 0;
   border-radius: 5px;
   border: 1px solid #00a2ff;
 `
-const TourWrapper = styled.div`
+const AccessoryWrapper = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 `
 const Image = styled.img`
   width: 95%;
   max-width: 990px;
-  max-height: 550px;
+  max-height: 450px;
   flex: 1;
-  object-fit: cover;
+  margin-left: 1.5rem;
 `
 const Title = styled.h1`
   font-weight: 600;
@@ -52,11 +53,11 @@ const Price = styled.p`
   font-weight: 500;
   color: #00a2ff;
 `
-const Plan = styled.p`
+const Info = styled.p`
   margin-top: 2rem;
   font-size: 20px;
 `
-const TourDescription = styled.p`
+const AccessoryDescription = styled.p`
   margin-top: 2rem;
   font-size: 20px;
 `
@@ -71,16 +72,16 @@ const Accessory = () => {
             <Container>
                 <Wrapper>
                     {Accessories.filter(tour => tour.id === id).map(filteredItem => (
-                        <TourWrapper>
+                        <AccessoryWrapper>
                             <Image src={filteredItem.img}/>
                             <Description>
                                 <Title>{filteredItem.title}</Title>
                                 <Price>Cena: {filteredItem.price} PLN</Price>
-                                <Plan>Co zawiera: <br/> <br/> {filteredItem.plan}</Plan>
-                                <TourDescription>Opis: <br/> <br/> {filteredItem.description}
-                                </TourDescription>
+                                <Info>Co zawiera: <br/> <br/> {filteredItem.info}</Info>
+                                <AccessoryDescription>Opis: <br/> <br/> {filteredItem.description}
+                                </AccessoryDescription>
                             </Description>
-                        </TourWrapper>
+                        </AccessoryWrapper>
                     ))}
                 </Wrapper>
             </Container>

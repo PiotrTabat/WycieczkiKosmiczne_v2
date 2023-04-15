@@ -101,10 +101,15 @@ const OrderButtonContainer = styled.div`
 `;
 
 
-const ShoppingCartItems = ({selectedTours, setSelectedTours}) => {
+const ShoppingCartItems = ({selectedTours, setSelectedTours, selectedAccessories, setSelectedAccessorries}) => {
 
-    const handleRemoveClick = (id) => {
-        setSelectedTours(selectedTours.filter((item) => item.id !== id));
+    const handleRemoveClick = (id, type) => {
+        if(type==='tour'){
+            setSelectedTours(selectedTours.filter((item) => item.id !== id));
+        }
+        else{
+            setSelectedAccessorries(selectedAccessories.filter((accessory) => accessory.id !== id));
+        }
     };
 
     const handleOrderClick = () => {
@@ -112,7 +117,7 @@ const ShoppingCartItems = ({selectedTours, setSelectedTours}) => {
     };
 
 
-    const totalAmount = selectedTours.reduce((total, tour) => total + tour.price, 0);
+    const totalAmount = selectedTours.reduce((total, tour) => total + tour.price, 0) + selectedAccessories.reduce((total, accessory) => total + accessory.price, 0);
 
 
     return (
@@ -123,7 +128,15 @@ const ShoppingCartItems = ({selectedTours, setSelectedTours}) => {
                         <Image src={item.img} alt={item.title}/>
                         <Title>{item.title}</Title>
                         <Price>{item.price}</Price>
-                        <Button onClick={() => handleRemoveClick(item.id)}>Usuń</Button>
+                        <Button onClick={() => handleRemoveClick(item.id, 'tour')}>Usuń</Button>
+                    </TourItem>
+                ))}
+                {selectedAccessories.map((accessory) => (
+                    <TourItem key={accessory.id}>
+                        <Image src={accessory.img} alt={accessory.title}/>
+                        <Title>{accessory.title}</Title>
+                        <Price>{accessory.price}</Price>
+                        <Button onClick={() => handleRemoveClick(accessory.id, 'accessory')}>Usuń</Button>
                     </TourItem>
                 ))}
                 <OrderButtonContainer>

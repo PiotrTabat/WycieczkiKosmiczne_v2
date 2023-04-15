@@ -53,6 +53,7 @@ export const Accessories = [
         id: '1',
         img: 'https://m.media-amazon.com/images/I/41ck7Aww8jL._AC_SY1000_.jpg',
         title: 'Koszulka',
+        info: 'Koszulka z motywem podróży kosmicznych',
         description: 'Koszulka z motywem podróży kosmicznych',
         price: 100
     },
@@ -60,6 +61,7 @@ export const Accessories = [
         id: '2',
         img: 'https://www.salon-sloneczna.pl/6-share/2021-kosmiczna-rakieta-astronauta-mars-skarpetki-z_38031-pic.jpg',
         title: 'Skarpety',
+        info: 'Skarpety z rakietą kosmiczną',
         description: 'Skarpety z motywem podróży kosmicznych',
         price: 50
     },
@@ -67,6 +69,7 @@ export const Accessories = [
         id: '3',
         img: 'https://static3.redcart.pl/templates/images/thumb/4608/1024/1024/pl/0/templates/images/products/4608/f7a51391f3f577f47c0b1428da99756c.jpg',
         title: 'Kombinezon kosmonauty',
+        info: 'Kombinezon kosmonauty, hełm, rękawice, buty',
         description: 'Kombinezon kosmonauty wykonany z najwyższej jakości materiałów',
         price: 1500
     }

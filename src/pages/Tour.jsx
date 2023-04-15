@@ -14,7 +14,7 @@ const Container = styled.div`
 const Wrapper = styled.div`
   padding: 1rem 4rem;
   background-color: #000000df;
-  height: 90%;
+  height:auto;
   width: 70%;
   flex-direction: column;
   align-items: center;
@@ -31,7 +31,7 @@ const TourWrapper = styled.div`
 const Image = styled.img`
   width: 95%;
   max-width: 990px;
-  max-height: 550px;
+  max-height: 450px;
   flex: 1;
   object-fit: cover;
 `

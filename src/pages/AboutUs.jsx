@@ -14,6 +14,7 @@ const Wrapper = styled.div`
   padding: 1rem;
   background-color: #111111b2;
   width: 70%;
+  min-height: 60vh;
   display: flex;
   flex-direction: column;
   align-items: center;

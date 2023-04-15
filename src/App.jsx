@@ -6,6 +6,7 @@ import MainPage from './pages/MainPage';
 import {Routes, Route, useLocation} from 'react-router-dom';
 import Footer from './components/Footer';
 import Tour from './pages/Tour';
+import Accessory from './pages/Accessory';
 import AboutUs from './pages/AboutUs';
 import {Tours, Accessories} from './data';
 import ShoppingCart from './pages/ShoppingCart';
@@ -61,7 +62,7 @@ const App = () => {
                         }
                     />
                     <Route path="tour/:id" element={<Tour/>}/>
-                    <Route path="/accessory/:id" component={Accessories}/>
+                    <Route path="/accessory/:id" element={<Accessory />} />
                     <Route
                         path="/shopping-cart"
                         element={
@@ -73,12 +74,20 @@ const App = () => {
                             />
                         }
                     />
+                    <Route path="/shopping-cart" exact component={ShoppingCart} />
                     <Route path="about-us" element={<AboutUs/>}/>
                 </Routes>
             </AnimatePresence>
-            <Footer/>
+            <RenderFooter/>
         </div>
     );
+};
+
+const RenderFooter = () => {
+    const location = useLocation();
+    const isShoppingCartPage = location.pathname === '/shopping-cart';
+
+    return !isShoppingCartPage ? <Footer /> : null;
 };
 
 export default App;
