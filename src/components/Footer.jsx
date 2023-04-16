@@ -5,10 +5,9 @@ import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   background-color: #000;
-  padding: 0.5rem;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: normal;
   color: white;
 `
 const Left = styled.div`
@@ -16,26 +15,24 @@ const Left = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
   text-align: left;
+  margin-left: 1rem;
 `
 const Center = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  margin:  0  0 2rem 10rem;
   text-align: left;
-  width: 100%;
-
 `
 const Right = styled.div`
   flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
-  margin-right: 3rem;
-  width: 100%;
+  justify-content: center;
+  margin:1rem 4rem 0 0;
 `
 const Title = styled.h2`
   font-weight: bold;
@@ -51,10 +48,8 @@ const Line = styled.p`
 `
 const Line1 = styled.div`
   font-size: 24px;
+  text-align: center;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: left;
   width: 5rem;
   height: 5rem;
 `
@@ -67,6 +62,17 @@ const NavLink = styled(Link)`
     text-decoration: underline;
   }
 `
+const Copyright = styled.p`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  font-size: 16px;
+  text-align: left;
+  margin: 0 4rem 2rem 0;
+  line-height: 1.5;
+  color: white;
+`;
 
 const Footer = () => {
     const scrollToTop = () => {
@@ -104,6 +110,12 @@ const Footer = () => {
                 <Line1><a href="https://www.twitter.com/your_account" target="_blank" rel="noopener noreferrer"><FaTwitter fontSize={30} /></a></Line1>
                 <Line1><a href="https://www.instagram.com/your_account" target="_blank" rel="noopener noreferrer"><FaInstagram fontSize={30} /></a></Line1>
             </Right>
+            <Copyright>
+                &copy; {new Date().getFullYear()} Pjoter Holding Sp. z o.o. Wszelkie prawa zastrzeżone.<br />
+                Projekt i wykonanie: T-Bat<br />
+                <br/>
+                Wszelkie prawa dotyczące treści i zdjęć umieszczonych na stronach sklepu należą do ich właścicieli.
+            </Copyright>
         </Container>
     )
 }

@@ -11,6 +11,11 @@ import AboutUs from './pages/AboutUs';
 import {Tours, Accessories} from './data';
 import ShoppingCart from './pages/ShoppingCart';
 import Contact from "./pages/Contact";
+import Privacy from "./pages/Privacy";
+import Regulations from "./pages/Regulations";
+import Payments from "./pages/Payments";
+import Delivery from "./pages/Delivery";
+import Returns from "./pages/Returns";
 
 
 const App = () => {
@@ -78,6 +83,12 @@ const App = () => {
                     />
                     <Route path="/shopping-cart" exact component={ShoppingCart} />
                     <Route path="about-us" element={<AboutUs/>}/>
+                    <Route path="privacy" element={<Privacy/>}/>
+                    <Route path="regulations" element={<Regulations/>}/>
+                    <Route path="payments" element={<Payments/>}/>
+                    <Route path="delivery" element={<Delivery/>}/>
+                    <Route path="returns" element={<Returns/>}/>
+
                 </Routes>
             </AnimatePresence>
             <RenderFooter/>
