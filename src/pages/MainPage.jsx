@@ -1,11 +1,9 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import {motion} from 'framer-motion';
 import TourList from '../components/TourList';
 import AccessoryList from '../components/AccessoryList';
 import styled from 'styled-components';
 import backgroundImage from '../assets/7-2.jpg';
-
-
 
 
 
@@ -24,7 +22,6 @@ const HomePageWrapper = styled.div`
 
 const HomePage = styled.div`
   height: 100%;
-
   display: flex;
   flex-direction: column;
   padding: 12rem 0 0 0;
@@ -44,7 +41,7 @@ const StyledH1 = styled.h1`
   text-shadow: 0 0 10px #00a2ff;
 `;
 
-const MainPage = ({ tours, accessories, handleClick }) => {
+const MainPage = ({tours, accessories, handleClick}) => {
 
     return (
         <motion.div
@@ -63,7 +60,6 @@ const MainPage = ({ tours, accessories, handleClick }) => {
                 <TourList tours={tours} handleClick={handleClick}/>
                 <StyledH1 id="accessories">Akcesoria</StyledH1>
                 <AccessoryList accessories={accessories} handleClick={handleClick}/>
-
             </Wrapper>
         </motion.div>
     );

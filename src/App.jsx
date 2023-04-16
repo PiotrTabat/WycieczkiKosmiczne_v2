@@ -10,6 +10,7 @@ import Accessory from './pages/Accessory';
 import AboutUs from './pages/AboutUs';
 import {Tours, Accessories} from './data';
 import ShoppingCart from './pages/ShoppingCart';
+import Contact from "./pages/Contact";
 
 
 const App = () => {
@@ -63,6 +64,7 @@ const App = () => {
                     />
                     <Route path="tour/:id" element={<Tour/>}/>
                     <Route path="/accessory/:id" element={<Accessory />} />
+                    <Route path="/contact" element={<Contact />} />
                     <Route
                         path="/shopping-cart"
                         element={
@@ -86,8 +88,9 @@ const App = () => {
 const RenderFooter = () => {
     const location = useLocation();
     const isShoppingCartPage = location.pathname === '/shopping-cart';
+    const isContactPage = location.pathname === '/contact';
+    const isAboutUsPage = location.pathname === '/about-us';
 
-    return !isShoppingCartPage ? <Footer /> : null;
+    return !isShoppingCartPage && !isContactPage && !isAboutUsPage ? <Footer /> : null;
 };
-
 export default App;

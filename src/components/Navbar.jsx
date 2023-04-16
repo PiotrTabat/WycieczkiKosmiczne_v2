@@ -10,6 +10,7 @@ import Dropdown from './Dropdown';
 
 
 
+
 const Container = styled.div`
   position: fixed;
   top: 0;
@@ -137,12 +138,15 @@ const Navbar = ({ toggle }) => {
                         Produkty
                         <Dropdown isHomePage={isHomePage} show={showDropdown} />
                     </MenuItem>
-                    <Link to="/#contact">
+
+                    <Link to="/contact">
                         <MenuItem>Kontakt</MenuItem>
                     </Link>
+
                     <Link to="/about-us">
                         <MenuItem>O Nas</MenuItem>
                     </Link>
+
                     <Link to="/shopping-cart">
                         <MenuItem>
                             <FaShoppingCart fontSize={24} />
