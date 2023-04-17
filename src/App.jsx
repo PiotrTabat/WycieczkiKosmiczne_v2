@@ -31,15 +31,15 @@ const App = () => {
     };
 
     const handleClick = (id) => {
-            const tour = Products.find((tour) => tour.id === id);
-            if (selectedTours.find((tour) => tour.id === id)) {
-                setSelectedTours(
-                    selectedTours.filter((tour) => tour.id !== id)
-                );
-            } else {
-                setSelectedTours([...selectedTours, tour]);
-            }
+        const tour = Products.find((tour) => tour.id === id);
+        if (selectedTours.find((tour) => tour.id === id)) {
+            setSelectedTours(
+                selectedTours.filter((tour) => tour.id !== id)
+            );
+        } else {
+            setSelectedTours([...selectedTours, tour]);
         }
+    }
 
     const location = useLocation();
 

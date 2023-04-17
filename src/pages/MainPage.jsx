@@ -1,12 +1,7 @@
-import React from 'react';
+import React, {lazy, Suspense} from 'react';
 import {motion} from 'framer-motion';
-import TourList from '../components/TourList';
-import AccessoryList from '../components/AccessoryList';
-import InsuranceList from "../components/InsuranceList";
 import styled from 'styled-components';
 import backgroundImage from '../assets/MainPage_rakieta.jpg';
-
-
 
 
 const Wrapper = styled.div`
@@ -44,6 +39,9 @@ const StyledH1 = styled.h1`
 `;
 
 const MainPage = ({tours, accessories, insurances, handleClick}) => {
+    const TourList = lazy(() => import('../components/TourList'));
+    const AccessoryList = lazy(() => import('../components/AccessoryList'));
+    const InsuranceList = lazy(() => import('../components/InsuranceList'));
 
     return (
         <motion.div
@@ -59,11 +57,17 @@ const MainPage = ({tours, accessories, insurances, handleClick}) => {
                     </HomePage>
                 </HomePageWrapper>
                 <StyledH1 id="tours">Wycieczki kosmiczne</StyledH1>
-                <TourList tours={tours} handleClick={handleClick}/>
+                <Suspense fallback={<div>Ładowanie wycieczek...</div>}>
+                    <TourList tours={tours} handleClick={handleClick}/>
+                </Suspense>
                 <StyledH1 id="accessories">Akcesoria</StyledH1>
-                <AccessoryList accessories={accessories} handleClick={handleClick}/>
+                <Suspense fallback={<div>Ładowanie akcesoriów...</div>}>
+                    <AccessoryList accessories={accessories} handleClick={handleClick}/>
+                </Suspense>
                 <StyledH1 id="insurances">Ubezpieczenia</StyledH1>
-                <InsuranceList insurances={insurances} handleClick={handleClick}/>
+                <Suspense fallback={<div>Ładowanie ubezpieczeń...</div>}>
+                    <InsuranceList insurances={insurances} handleClick={handleClick}/>
+                </Suspense>
             </Wrapper>
         </motion.div>
     );

@@ -86,14 +86,14 @@ const MenuItem = styled.div`
   }
 `;
 const UserIcon = styled(FaUserAstronaut)`
-  font-size: 40px;
+  font-size: 34px;
   margin-left: 2rem;
   cursor: pointer;
 `;
 
 
 const SearchIcon = styled(FaSearch)`
-  font-size: 28px;
+  font-size: 30px;
   margin-left: 2rem;
   cursor: pointer;
   display: flex;
@@ -132,7 +132,7 @@ const SearchInput = styled.input`
 const Navbar = ({toggle}) => {
     const location = useLocation();
     const isHomePage = location.pathname === "/";
-    const [isScrolling, setIsScrolling] = useState(false);
+    const [isScrolling, setIsScrolling] = useState(true);
     const [lastScrollTop, setLastScrollTop] = useState(0);
     const [showDropdown, setShowDropdown] = useState(false);
     const [searchVisible, setSearchVisible] = useState(false);
@@ -145,7 +145,7 @@ const Navbar = ({toggle}) => {
     };
 
     const handleScroll = useCallback(() => {
-        const currentScrollTop = window.pageYOffset;
+        const currentScrollTop = window.pageYOffset
         if (currentScrollTop > lastScrollTop) {
             setIsScrolling(false);
         } else {
