@@ -72,6 +72,10 @@ const Button = styled.button`
 `;
 
 const InsuranceList = ({handleClick}) => {
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     return (
         <motion.div
             initial={{opacity: 0}}
@@ -85,10 +89,10 @@ const InsuranceList = ({handleClick}) => {
                             <Image src={insurance.img}/>
                             <Title>{insurance.title}</Title>
                             <Price>Cena: {insurance.price} PLN</Price>
-                            <Link to={"/insurance/" + insurance.id}>
+                            <Link to={"/insurance/" + insurance.id} onClick={scrollToTop}>
                                 <Button>Zobacz Więcej</Button>
                             </Link>
-                            <Button onClick={() => handleClick(insurance.id, 'insurance')}>Dodaj do koszyka</Button>
+                            <Button onClick={(event) => {event.preventDefault(); handleClick(insurance.id, 'insurance')}}>Dodaj do koszyka</Button>
                         </InsuranceWrapper>
                     ))}
                 </Wrapper>
@@ -97,4 +101,4 @@ const InsuranceList = ({handleClick}) => {
     );
 };
 
-export default InsuranceList;
+    export default InsuranceList;

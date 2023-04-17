@@ -5,6 +5,7 @@ import backgroundImage from '../assets/MainPage_rakieta.jpg';
 
 
 const Wrapper = styled.div`
+    padding-bottom: 2rem;
 `;
 
 const HomePageWrapper = styled.div`

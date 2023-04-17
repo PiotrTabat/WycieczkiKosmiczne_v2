@@ -10,7 +10,7 @@ const ShoppingCart = ({selectedTours, setSelectedTours, selectedAccessories, set
             animate={{opacity: 1, transition: {duration: 1}}}
             exit={{opacity: 0}}
         >
-            <ShoppingCartItems selectedTours={selectedTours} setSelectedTours={setSelectedTours} selectedAccessories={selectedAccessories} setSelectedAccessorries={setSelectedAccessories} selectedInsurances={selectedInsurances} setSelectedInsurances={setSelectedInsurances}/>
+            <ShoppingCartItems selectedTours={selectedTours} setSelectedTours={setSelectedTours} selectedAccessories={selectedAccessories} setSelectedAccessories={setSelectedAccessories} selectedInsurances={selectedInsurances} setSelectedInsurances={setSelectedInsurances}/>
         </motion.div>
     )
 }

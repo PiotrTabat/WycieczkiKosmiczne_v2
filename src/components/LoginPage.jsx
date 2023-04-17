@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
+import {Link} from 'react-router-dom';
 
 
 const MainContainer = styled.div`
@@ -21,7 +22,7 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-  padding: 1rem 0 2rem 0;
+  padding: 2rem 0 2rem 0;
   background-color: #111111b2;
   width: 70%;
   min-height: 30vh;
@@ -70,15 +71,20 @@ const Input = styled.input`
   }
 `;
 
+const ButtonsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+  margin-top: 1rem;
+`;
 
 const Button = styled.button`
-  background-color: #00a2ff;
+  background-color: #0079c0;
   color: white;
   font-size: 1rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 2rem;
   border: none;
   border-radius: 5px;
-  margin-top: 1rem;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
 
@@ -90,10 +96,43 @@ const Button = styled.button`
     background-color: #002c3f;
   }
 `;
+const GuestButton = styled(Button)`
+  background-color: #0079c0;
+  color: white;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #01608f;
+  }
+
+  &:active {
+    background-color: #002c3f;
+  }
+`;
+
 const ErrorMessage = styled.p`
   color: #ff0000;
   font-size: 1.2rem;
   margin: 1rem 0;
+`;
+const SignUpLink = styled(Link)`
+  color: #00a2ff;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: #0174a9;
+  }
+
+  &:active {
+    color: #002c3f;
+  }
 `;
 
 const LoginPage = () => {
@@ -126,7 +165,7 @@ const LoginPage = () => {
         >
             <MainContainer>
                 <Container>
-                    <Title>Logowanie</Title>
+                    <Title>Login</Title>
                     <Wrapper>
                         {showError && (
                             <ErrorMessage>Proszę wprowadzić prawidłowy adres e-mail i hasło.</ErrorMessage>
@@ -146,8 +185,16 @@ const LoginPage = () => {
                                 isInvalid={!passwordIsValid}
                                 onChange={handlePasswordChange}
                             />
-                            <Button type="submit">Zaloguj się</Button>
+                            <ButtonsContainer>
+                                <Button type="submit">Zaloguj się</Button>
+                                <Link to="/order">
+                                    <GuestButton onClick={() => {/* Tutaj dodaj funkcję obsługującą zakup jako gość */}}>
+                                        Kup jako gość
+                                    </GuestButton>
+                                </Link>
+                            </ButtonsContainer>
                         </LoginForm>
+                        <SignUpLink to="/signup">Utwórz konto</SignUpLink>
                     </Wrapper>
                 </Container>
             </MainContainer>

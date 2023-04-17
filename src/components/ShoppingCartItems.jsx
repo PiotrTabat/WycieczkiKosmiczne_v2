@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {useNavigate} from 'react-router-dom';
 
 
 const Container = styled.div`
@@ -102,25 +103,78 @@ const OrderButtonContainer = styled.div`
   margin: 2rem 2rem;
 `;
 
+const QuantityButtons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 50px;
+  margin-left: 1rem;
+`;
 
-const ShoppingCartItems = ({selectedTours, setSelectedTours, selectedAccessories, setSelectedAccessorries, selectedInsurances, setSelectedInsurances}) => {
+const PlusButton = styled(Button)`
+  width: 25px;
+  height: 25px;
+  font-size: 18px;
+`;
 
-    const handleRemoveClick = (id, type) => {
-        if(type==='tour'){
-            setSelectedTours(selectedTours.filter((item) => item.id !== id));
+const MinusButton = styled(Button)`
+  width: 25px;
+  height: 25px;
+  font-size: 18px;
+`;
+
+const Quantity = styled.h1`
+  font-size: 22px;
+  font-weight: 600;
+`;
+
+
+const ShoppingCartItems = ({
+                               selectedTours,
+                               setSelectedTours,
+                               selectedAccessories,
+                               setSelectedAccessories,
+                               selectedInsurances,
+                               setSelectedInsurances
+                           }) => {
+
+    const updateQuantity = (event, id, type, delta) => {
+        event.preventDefault();
+        const update = (items, setSelected) => {
+            const index = items.findIndex((item) => item.id === id);
+            if (index > -1) {
+                const updatedItems = [...items];
+                updatedItems[index] = {...updatedItems[index], quantity: updatedItems[index].quantity + delta};
+                setSelected(updatedItems);
+            }
+        };
+
+        if (type === 'tour') {
+            update(selectedTours, setSelectedTours);
+        } else if (type === 'accessory') {
+            update(selectedAccessories, setSelectedAccessories);
+        } else if (type === 'insurance') {
+            update(selectedInsurances, setSelectedInsurances);
         }
-        else{
-            setSelectedAccessorries(selectedAccessories.filter((accessory) => accessory.id !== id));
+    };
+    const handleRemoveClick = (id, type) => {
+        if (type === 'tour') {
+            setSelectedTours(selectedTours.filter((item) => item.id !== id));
+        } else {
+            setSelectedAccessories(selectedAccessories.filter((accessory) => accessory.id !== id));
             setSelectedInsurances(selectedInsurances.filter((insurance) => insurance.id !== id));
         }
     };
 
+    const navigate = useNavigate();
+
     const handleOrderClick = () => {
-        alert('Zamówienie zostało złożone');
+        navigate('/login');
     };
 
 
-    const totalAmount = selectedTours.reduce((total, tour) => total + tour.price, 0) + selectedAccessories.reduce((total, accessory) => total + accessory.price, 0) + selectedInsurances.reduce((total, insurance) => total + insurance.price, 0);
+    const totalAmount = selectedTours.reduce((total, tour) => total + tour.price * tour.quantity, 0)
+        + selectedAccessories.reduce((total, accessory) => total + accessory.price * accessory.quantity, 0)
+        + selectedInsurances.reduce((total, insurance) => total + insurance.price * insurance.quantity, 0);
 
 
     return (
@@ -131,15 +185,26 @@ const ShoppingCartItems = ({selectedTours, setSelectedTours, selectedAccessories
                         <Image src={item.img} alt={item.title}/>
                         <Title>{item.title}</Title>
                         <Price>{item.price}</Price>
+                        <Quantity>Ilość: {item.quantity}</Quantity>
                         <Button onClick={() => handleRemoveClick(item.id, 'tour')}>Usuń</Button>
+                        <QuantityButtons>
+                            <PlusButton onClick={() => updateQuantity(item.id, 'tour', 1)}>+</PlusButton>
+                            <MinusButton onClick={() => updateQuantity(item.id, 'tour', -1)}>-</MinusButton>
+                        </QuantityButtons>
                     </TourItem>
                 ))}
+
                 {selectedAccessories.map((accessory) => (
                     <TourItem key={accessory.id}>
                         <Image src={accessory.img} alt={accessory.title}/>
                         <Title>{accessory.title}</Title>
                         <Price>{accessory.price}</Price>
+                        <Quantity>Ilość: {accessory.quantity}</Quantity>
                         <Button onClick={() => handleRemoveClick(accessory.id, 'accessory')}>Usuń</Button>
+                        <QuantityButtons>
+                            <PlusButton onClick={() => updateQuantity(accessory.id, 'accessory', 1)}>+</PlusButton>
+                            <MinusButton onClick={() => updateQuantity(accessory.id, 'accessory', -1)}>-</MinusButton>
+                        </QuantityButtons>
                     </TourItem>
                 ))}
                 {selectedInsurances.map((insurance) => (
@@ -147,9 +212,15 @@ const ShoppingCartItems = ({selectedTours, setSelectedTours, selectedAccessories
                         <Image src={insurance.img} alt={insurance.title}/>
                         <Title>{insurance.title}</Title>
                         <Price>{insurance.price}</Price>
+                        <Quantity>Ilość: {insurance.quantity}</Quantity>
                         <Button onClick={() => handleRemoveClick(insurance.id, 'insurance')}>Usuń</Button>
+                        <QuantityButtons>
+                            <PlusButton onClick={() => updateQuantity(insurance.id, 'insurance', 1)}>+</PlusButton>
+                            <MinusButton onClick={() => updateQuantity(insurance.id, 'insurance', -1)}>-</MinusButton>
+                        </QuantityButtons>
                     </TourItem>
                 ))}
+
                 <OrderButtonContainer>
                     <TotalAmount>Łączna kwota: {totalAmount}</TotalAmount>
                     {(selectedTours.length > 0 || selectedAccessories.length > 0 || selectedInsurances.length > 0) && (

@@ -233,7 +233,7 @@ const Navbar = ({toggle}) => {
 
                     <Link to="/shopping-cart">
                         <MenuItem>
-                            <FaShoppingCart fontSize={24}/>
+                            <FaShoppingCart fontSize={30}/>
                         </MenuItem>
                     </Link>
                 </Right>

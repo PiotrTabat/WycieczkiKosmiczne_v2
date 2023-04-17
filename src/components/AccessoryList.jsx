@@ -72,6 +72,10 @@ const Button = styled.button`
 `;
 
 const AccessoryList = ({handleClick}) => {
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     return (
         <motion.div
             initial={{opacity: 0}}
@@ -85,10 +89,10 @@ const AccessoryList = ({handleClick}) => {
                             <Image src={accessory.img}/>
                             <Title>{accessory.title}</Title>
                             <Price>Cena: {accessory.price} PLN</Price>
-                            <Link to={"/accessory/" + accessory.id}>
+                            <Link to={"/accessory/" + accessory.id} onClick={scrollToTop}>
                                 <Button>Zobacz Więcej</Button>
                             </Link>
-                            <Button onClick={() => handleClick(accessory.id, 'accessory')}>Dodaj do koszyka</Button>
+                            <Button onClick={(event) => {event.preventDefault(); handleClick(accessory.id, 'accessory')}}>Dodaj do koszyka</Button>
                         </Accessory>
                     ))}
                 </Wrapper>

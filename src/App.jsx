@@ -18,6 +18,7 @@ import Delivery from "./pages/Delivery";
 import Returns from "./pages/Returns";
 import Insurance from "./pages/Insurance";
 import LoginPage from './components/LoginPage';
+import OrderPage from "./components/OrderPage";
 
 
 const App = () => {
@@ -31,15 +32,16 @@ const App = () => {
     };
 
     const handleClick = (id) => {
-        const tour = Products.find((tour) => tour.id === id);
-        if (selectedTours.find((tour) => tour.id === id)) {
-            setSelectedTours(
-                selectedTours.filter((tour) => tour.id !== id)
-            );
+
+        const item = Products.find((item) => item.id === id);
+        const currentItems = selectedTours.filter((tour) => tour.id !== id);
+        if (currentItems.length < selectedTours.length) {
+            item.quantity = 1;
         } else {
-            setSelectedTours([...selectedTours, tour]);
+            item.quantity = (item.quantity || 0) + 1;
         }
-    }
+        setSelectedTours([...currentItems, item]);
+    };
 
     const location = useLocation();
 
@@ -85,6 +87,7 @@ const App = () => {
                     <Route path="delivery" element={<Delivery/>}/>
                     <Route path="returns" element={<Returns/>}/>
                     <Route path="login" element={<LoginPage/>}/>
+                    <Route path="order" element={<OrderPage/>}/>
                 </Routes>
             </AnimatePresence>
             <RenderFooter/>
