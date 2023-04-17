@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import styled from 'styled-components'
 import logo from '../assets/logo_violet.png'
-import {FaBars, FaShoppingCart} from 'react-icons/fa';
+import {FaBars, FaShoppingCart, FaUserAstronaut} from 'react-icons/fa';
 import {Link} from 'react-router-dom';
 import {useLocation} from 'react-router-dom';
 import {animateScroll} from 'react-scroll';
@@ -84,6 +84,11 @@ const MenuItem = styled.div`
     color: #00a2ff;
   }
 `;
+const UserIcon = styled(FaUserAstronaut)`
+  font-size: 40px;
+  margin-left: 2rem;
+  cursor: pointer;
+`;
 
 const Navbar = ({toggle}) => {
     const location = useLocation();
@@ -93,7 +98,7 @@ const Navbar = ({toggle}) => {
     const [showDropdown, setShowDropdown] = useState(false);
 
 
-    const handleScroll = () => {
+    const handleScroll = useCallback(() => {
         const currentScrollTop = window.pageYOffset;
         if (currentScrollTop > lastScrollTop) {
             setIsScrolling(false);
@@ -101,7 +106,7 @@ const Navbar = ({toggle}) => {
             setIsScrolling(true);
         }
         setLastScrollTop(currentScrollTop <= 0 ? 0 : currentScrollTop);
-    };
+    }, [lastScrollTop]);
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
@@ -109,7 +114,7 @@ const Navbar = ({toggle}) => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [lastScrollTop]);
+    }, [handleScroll]);
 
     const scrollToTop = () => {
         animateScroll.scrollToTop();
@@ -121,6 +126,9 @@ const Navbar = ({toggle}) => {
             <Wrapper>
                 <Left>
                     <Link to="/"><Logo src={logo}/></Link>
+                    <Link to="/login">
+                        <UserIcon/>
+                    </Link>
                 </Left>
                 <Right>
                     {isHomePage ? (

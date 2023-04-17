@@ -17,6 +17,7 @@ import Payments from "./pages/Payments";
 import Delivery from "./pages/Delivery";
 import Returns from "./pages/Returns";
 import Insurance from "./pages/Insurance";
+import LoginPage from './components/LoginPage';
 
 
 const App = () => {
@@ -103,6 +104,7 @@ const App = () => {
                     <Route path="payments" element={<Payments/>}/>
                     <Route path="delivery" element={<Delivery/>}/>
                     <Route path="returns" element={<Returns/>}/>
+                    <Route path="login" element={<LoginPage/>}/>
                 </Routes>
             </AnimatePresence>
             <RenderFooter/>
