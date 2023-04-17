@@ -1,6 +1,6 @@
 import React from 'react'
 import {motion} from 'framer-motion';
-import {Accessories} from '../data';
+import {Products} from '../data';
 import {useParams} from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -72,7 +72,7 @@ const Accessory = () => {
         >
             <Container>
                 <Wrapper>
-                    {Accessories.filter(tour => tour.id === id).map(filteredItem => (
+                    {Products.filter(tour => tour.id === id).map(filteredItem => (
                         <AccessoryWrapper>
                             <Image src={filteredItem.img}/>
                             <Description>

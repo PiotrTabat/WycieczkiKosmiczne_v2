@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 import Tour from './pages/Tour';
 import Accessory from './pages/Accessory';
 import AboutUs from './pages/AboutUs';
-import {Tours, Accessories, Insurances} from './data';
+import {Products} from './data';
 import ShoppingCart from './pages/ShoppingCart';
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
@@ -30,9 +30,8 @@ const App = () => {
         setIsOpen(!isOpen);
     };
 
-    const handleClick = (id, type) => {
-        if (type === 'tour') {
-            const tour = Tours.find((tour) => tour.id === id);
+    const handleClick = (id) => {
+            const tour = Products.find((tour) => tour.id === id);
             if (selectedTours.find((tour) => tour.id === id)) {
                 setSelectedTours(
                     selectedTours.filter((tour) => tour.id !== id)
@@ -40,26 +39,7 @@ const App = () => {
             } else {
                 setSelectedTours([...selectedTours, tour]);
             }
-        } else if (type === 'accessory') {
-            const accessory = Accessories.find((accessory) => accessory.id === id);
-            if (selectedAccessories.find((accessory) => accessory.id === id)) {
-                setSelectedAccessories(
-                    selectedAccessories.filter((accessory) => accessory.id !== id)
-                );
-            } else {
-                setSelectedAccessories([...selectedAccessories, accessory]);
-            }
-        } else if (type === 'insurance') {
-            const insurance = Insurances.find((insurance) => insurance.id === id);
-            if (selectedInsurances.find((insurance) => insurance.id === id)) {
-                setSelectedInsurances(
-                    selectedInsurances.filter((insurance) => insurance.id !== id)
-                );
-            } else {
-                setSelectedInsurances([...selectedInsurances, insurance]);
-            }
         }
-    }
 
     const location = useLocation();
 
@@ -73,9 +53,9 @@ const App = () => {
                         path="/"
                         element={
                             <MainPage
-                                tours={Tours}
-                                accessories={Accessories}
-                                insurances={Insurances}
+                                tours={Products}
+                                accessories={Products}
+                                insurances={Products}
                                 handleClick={handleClick}
                             />
                         }

@@ -1,8 +1,9 @@
 import React from 'react'
 import {motion} from 'framer-motion';
-import {Insurances} from '../data';
+import {Products} from '../data';
 import {useParams} from 'react-router-dom';
 import styled from 'styled-components';
+
 
 const Container = styled.div`
   color: white;
@@ -72,7 +73,7 @@ const Insurance = () => {
         >
             <Container>
                 <Wrapper>
-                    {Insurances.filter(tour => tour.id === id).map(filteredItem => (
+                    {Products.filter(tour => tour.id === id).map(filteredItem => (
                         <InsuranceWrapper>
                             <Image src={filteredItem.img}/>
                             <Description>

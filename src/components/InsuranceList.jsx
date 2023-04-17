@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Insurances} from '../data';
+import {Products} from '../data';
 import {Link} from 'react-router-dom';
 import {motion} from 'framer-motion';
 
@@ -80,7 +80,7 @@ const InsuranceList = ({handleClick}) => {
         >
             <Container>
                 <Wrapper>
-                    {Insurances.map((insurance) => (
+                    {Products.filter(product => product.type === 'insurance').map(insurance => (
                         <InsuranceWrapper key={insurance.id}>
                             <Image src={insurance.img}/>
                             <Title>{insurance.title}</Title>

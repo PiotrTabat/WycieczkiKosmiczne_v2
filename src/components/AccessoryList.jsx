@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Accessories} from '../data';
+import {Products} from '../data';
 import {Link} from 'react-router-dom';
 import {motion} from 'framer-motion';
 
@@ -80,7 +80,7 @@ const AccessoryList = ({handleClick}) => {
         >
             <Container>
                 <Wrapper>
-                    {Accessories.map((accessory) => (
+                    {Products.filter(product => product.type === 'accessory').map((accessory) => (
                         <Accessory key={accessory.id}>
                             <Image src={accessory.img}/>
                             <Title>{accessory.title}</Title>

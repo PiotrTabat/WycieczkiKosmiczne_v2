@@ -1,11 +1,12 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import styled from 'styled-components'
 import logo from '../assets/logo_violet.png'
-import {FaBars, FaShoppingCart, FaUserAstronaut} from 'react-icons/fa';
+import {FaBars, FaShoppingCart, FaUserAstronaut, FaSearch} from 'react-icons/fa';
 import {Link} from 'react-router-dom';
 import {useLocation} from 'react-router-dom';
 import {animateScroll} from 'react-scroll';
 import Dropdown from './Dropdown';
+import {Products} from "../data";
 
 
 const Container = styled.div`
@@ -90,13 +91,58 @@ const UserIcon = styled(FaUserAstronaut)`
   cursor: pointer;
 `;
 
+
+const SearchIcon = styled(FaSearch)`
+  font-size: 28px;
+  margin-left: 2rem;
+  cursor: pointer;
+  display: flex;
+
+`;
+
+const SearchInput = styled.input`
+  width: 15rem;
+  height: 2rem;
+  margin-left: 1rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #222222;
+  color: white;
+  text-shadow: 0 0 10px #00a2ff;
+  box-shadow: 0 0 10px #00a2ff;
+  transition: width 0.4s ease-in-out;
+  overflow: hidden;
+
+
+  &::placeholder {
+    color: white;
+    opacity: 0.5;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 10px #00a2ff, 0 0 10px #00a2ff;
+  }
+`;
+
+
+
 const Navbar = ({toggle}) => {
     const location = useLocation();
     const isHomePage = location.pathname === "/";
     const [isScrolling, setIsScrolling] = useState(false);
     const [lastScrollTop, setLastScrollTop] = useState(0);
     const [showDropdown, setShowDropdown] = useState(false);
+    const [searchVisible, setSearchVisible] = useState(false);
+    const [searchResults, setSearchResults] = useState([]);
+    const [searchValue, setSearchValue] = useState("");
 
+
+    const handleSearchClick = () => {
+        setSearchVisible(!searchVisible);
+    };
 
     const handleScroll = useCallback(() => {
         const currentScrollTop = window.pageYOffset;
@@ -119,6 +165,12 @@ const Navbar = ({toggle}) => {
     const scrollToTop = () => {
         animateScroll.scrollToTop();
     };
+    const searchProducts = (searchText) => {
+        const filteredProducts = Products.filter((product) =>
+            product.title.toLowerCase().includes(searchText.toLowerCase())
+        );
+        setSearchResults(filteredProducts);
+    };
 
 
     return (
@@ -129,6 +181,33 @@ const Navbar = ({toggle}) => {
                     <Link to="/login">
                         <UserIcon/>
                     </Link>
+                    <SearchIcon onClick={handleSearchClick}/>
+                    {searchVisible && (
+                        <>
+                            <SearchInput
+                                type="search"
+                                placeholder="Szukaj..."
+                                value={searchValue}
+                                onChange={(e) => {
+                                    setSearchValue(e.target.value);
+                                    searchProducts(e.target.value);
+                                }}
+                                onFocus={() => setSearchVisible(true)}
+                                onBlur={() => setSearchVisible(false)}
+                            />
+                            {searchResults.length > 0 && (
+                                <SearchResultsContainer>
+                                    {searchResults.map((product) => (
+                                        <Link to={`/tour/${product.id}`}>
+                                            <SearchResultItem key={product.id}>
+                                                {product.title}
+                                            </SearchResultItem>
+                                        </Link>
+                                    ))}
+                                </SearchResultsContainer>
+                            )}
+                        </>
+                    )}
                 </Left>
                 <Right>
                     {isHomePage ? (
@@ -166,4 +245,39 @@ const Navbar = ({toggle}) => {
     );
 };
 
+
+const SearchResultsContainer = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 175px;
+  background-color: #222;
+  width: 70%;
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #00a2ff;
+  z-index: 100;
+`;
+
+const SearchResultItem = styled.div`
+  padding: 0 1rem;
+  cursor: pointer;
+  color: white;
+  text-shadow: 0 0 10px #00a2ff;
+  transition: background-color 0.2s ease-in-out;
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  
+
+  &:hover {
+    background-color: #333;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+`;
 export default Navbar;

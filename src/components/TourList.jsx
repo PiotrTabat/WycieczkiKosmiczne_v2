@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {Tours} from '../data'
+import {Products} from '../data'
 import {Link} from 'react-router-dom';
 import {motion} from "framer-motion";
 
@@ -80,7 +80,7 @@ const TourList = ({handleClick}) => {
         >
             <Container>
                 <Wrapper>
-                    {Tours.map((tour) => (
+                    {Products.filter(product => product.type === 'tour').map(tour => (
                         <Tour key={tour.id}>
                             <Image src={tour.img}/>
                             <Title>{tour.title}</Title>

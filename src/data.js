@@ -1,7 +1,8 @@
 
-export const Tours = [
+export const Products = [
     {
         id: '1',
+        type: 'tour',
         img: 'https://ocdn.eu/pulscms-transforms/1/G-lk9kpTURBXy83YjQ4YmNiZTE4NTFkMjNiMTBjOTFlZjA5MGY5MzhkYS5qcGeTlQMANc0Gxs0Dz5MFzQSwzQKkkwmmODljMzdlBt4AAaEwAQ/superksiezyc-zdjecie-ilustracyjne.jpeg',
         title: 'Wycieczka na Księżyc',
         plan: '1. Przygotowanie do lotu\n2. Start\n3. Przylot na Księżyc\n4. Przejście do bazy księżycowej\n5. Obserwacja widoków\n6. Powrót na Ziemię',
@@ -45,6 +46,7 @@ export const Tours = [
     },
     {
         id: '2',
+        type: 'tour',
         img: 'https://ocdn.eu/pulscms-transforms/1/pmIk9kuTURBXy85OGQ0N2FjNS1lYjBhLTQ4NGQtODA2Ni1hYWY0ZDNkNzFmOGMuanBlZ5GTAs0FRs0DQN4AAaEwBQ',
         title: 'Wycieczka na Marsa',
         plan: '1. Przygotowanie do lotu\n2. Start\n3. Przylot na Marsa\n4. Przejście do hotelu\n5. Obserwacja widoków\n6. Powrót do Ziemi',
@@ -113,6 +115,7 @@ export const Tours = [
     },
     {
         id: '3',
+        type: 'tour',
         img: 'https://nauka.rocks/wp-content/uploads/2022/07/wenus-768x403.jpg',
         title: 'Wycieczka na Wenus',
         plan: '1. Przygotowanie do lotu\n2. Start\n3. Przylot na Ziemię\n4. Przejście do hotelu\n5. Obserwacja widoków\n6. Powrót do Ziemi',
@@ -151,6 +154,7 @@ export const Tours = [
     },
     {
         id: '4',
+        type: 'tour',
         img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx50DMQ6VqdG67OUhas3SZlX6IaF6P1RBdXcfn-MUOVLZO25mC2F1fjxpIyKLiLNP7YJM&usqp=CAU',
         title: 'Wycieczka na Jowisz',
         plan: '1. Przygotowanie do lotu\n2. Start\n3. Przylot na Jowisza\n4. Przejście do hotelu\n5. Obserwacja widoków\n6. Powrót do Ziemi',
@@ -185,6 +189,7 @@ export const Tours = [
     },
     {
         id: '5',
+        type: 'tour',
         img: 'https://ocdn.eu/pulscms-transforms/1/W6Dk9kuTURBXy84YTZjOTg0Ny05ODExLTQ0YzAtOTRmOC04NjdjMDBhOGM0NDIuanBlZ5GTAs0G280EON4AAaEwBQ',
         title: 'Wycieczka na ISS',
         plan: '1. Przygotowanie do lotu\n2. Start\n3. Przylot na ISS\n4. Przejście do hotelu\n5. Obserwacja widoków\n6. Powrót do Ziemi',
@@ -223,6 +228,7 @@ export const Tours = [
     },
     {
         id: '6',
+        type: 'tour',
         img: 'https://t2.gstatic.com/licensed-image?q=tbn:ANd9GcSpSO4cQdDF2U3RHXDkKIfis9ofVxh_tC6PF6ZtuX-moYtAOUjruNXgJcfX9auDG9Vk',
         title: 'Wycieczka na Uran',
         plan: '1. Przygotowanie do lotu\n2. Start\n3. Przylot na Słońce\n4. Przejście do hotelu\n5. Obserwacja widoków\n6. Powrót do Ziemi',
@@ -259,6 +265,7 @@ export const Tours = [
     },
     {
         id: '7',
+        type: 'tour',
         img: 'https://www.medianauka.pl/fizyka/grafika/big/saturn.jpg',
         title: 'Wycieczka na Saturn',
         plan: '1. Przygotowanie do lotu\n2. Start\n3. Przylot na Słońce\n4. Przejście do hotelu\n5. Obserwacja widoków\n6. Powrót do Ziemi',
@@ -296,6 +303,7 @@ export const Tours = [
         price: 180000
     }, {
         id: '8',
+        type: 'tour',
         img: 'https://odkrywcyplanet.pl/wp-content/uploads/2018/07/planeta-Neptun.jpg',
         title: 'Wycieczka na Neptun',
         plan: '1. Przygotowanie do lotu\n2. Start\n3. Przylot na Słońce\n4. Przejście do hotelu\n5. Obserwacja widoków\n6. Powrót do Ziemi',
@@ -334,11 +342,10 @@ export const Tours = [
             'Planowanie kolejnych podróży: zachęcanie do uczestnictwa w kolejnych ekscytujących wycieczkach kosmicznych organizowanych przez T-BAT TOUR.\n' +
             'Ta wyjątkowa wycieczka na Neptuna z biurem podróży T-BAT TOUR zapewnia niezwykłe doświadczenie i możliwość odkrycia jednego z najbardziej odległych zakątków Układu Słonecznego. Przyłącz się do nas i stań się częścią historii eksploracji kosmosu!\n',
         price: 240000
-    }
-]
-export const Accessories = [
+    },
     {
-        id: '1',
+        id: '9',
+        type: 'accessory',
         img: 'https://m.media-amazon.com/images/I/41ck7Aww8jL._AC_SY1000_.jpg',
         title: 'Koszulka',
         info: 'Koszulka z motywem podróży kosmicznych',
@@ -354,7 +361,8 @@ export const Accessories = [
         price: 190
     },
     {
-        id: '2',
+        id: '10',
+        type: 'accessory',
         img: 'https://www.salon-sloneczna.pl/6-share/2021-kosmiczna-rakieta-astronauta-mars-skarpetki-z_38031-pic.jpg',
         title: 'Skarpety',
         info: 'Skarpety z rakietą kosmiczną',
@@ -368,7 +376,8 @@ export const Accessories = [
         price: 60
     },
     {
-        id: '3',
+        id: '11',
+        type: 'accessory',
         img: 'https://static3.redcart.pl/templates/images/thumb/4608/1024/1024/pl/0/templates/images/products/4608/f7a51391f3f577f47c0b1428da99756c.jpg',
         title: 'Kombinezon kosmonauty',
         info: 'Kombinezon kosmonauty, hełm, rękawice, buty',
@@ -386,7 +395,8 @@ export const Accessories = [
         price: 1500
     },
     {
-        id: '4',
+        id: '12',
+        type: 'accessory',
         img: 'https://leantoys.pl/pol_pl_Rakieta-Kosmiczna-Statek-Kosmiczny-Kosmos-Swiatlo-Dzwiek-12657_4.png',
         title: 'Rakieta kosmiczna - zabawka',
         info: 'Rakieta kosmiczna ze statekiem kosmicznym',
@@ -402,7 +412,8 @@ export const Accessories = [
         price: 500
     },
     {
-        id: '5',
+        id: '13',
+        type: 'accessory',
         img: 'https://m.media-amazon.com/images/I/71jBBJePEIL._AC_UF1000,1000_QL80_.jpg',
         title: 'Plakietki - naszywki',
         info: 'Plakietki NASA, NASA logo, NASA patch',
@@ -421,12 +432,10 @@ export const Accessories = [
             '\n' +
             'Zamów swoje ulubione naszywki już dziś i wyraź swoją pasję do niezwykłych podróży w kosmos. U nas odnajdziesz nie tylko wyjątkowe akcesoria, ale również inspirację do dalszych odkryć i nauki o otaczającym nas wszechświecie.\n',
         price: 150
-    }
-]
-
-export const Insurances = [
+    },
     {
-        id: '1',
+        id: '14',
+        type: 'insurance',
         img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPKwQzCToyl6M8yXs9PKkT7lDx2f5fSp55vTqMhKv7T3oSiMPqE3yXZRWEqirKIBYslMA&usqp=CAU',
         title: 'Ubezpieczenie podstawowe',
         info: 'Ubezpieczenie kosmiczne podstawowe',
@@ -446,7 +455,8 @@ export const Insurances = [
         price: 500
     },
     {
-        id: '2',
+        id: '15',
+        type: 'insurance',
         img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPKwQzCToyl6M8yXs9PKkT7lDx2f5fSp55vTqMhKv7T3oSiMPqE3yXZRWEqirKIBYslMA&usqp=CAU',
         title: 'Ubezpieczenie rozszerzone',
         info: 'Ubezpieczenie kosmiczne rozszerzone',
@@ -466,7 +476,8 @@ export const Insurances = [
         price: 1000
     },
     {
-        id: '3',
+        id: '16',
+        type: 'insurance',
         img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPKwQzCToyl6M8yXs9PKkT7lDx2f5fSp55vTqMhKv7T3oSiMPqE3yXZRWEqirKIBYslMA&usqp=CAU',
         title: 'Ubezpieczenie premium',
         info: 'Ubezpieczenie kosmiczne premium',
