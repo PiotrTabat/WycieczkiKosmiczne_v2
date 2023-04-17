@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Accessories} from '../data';
+import {Insurances} from '../data';
 import {Link} from 'react-router-dom';
 import {motion} from 'framer-motion';
 
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
     overflow-y: scroll;
   }
 `;
-const Accessory = styled.div`
+const InsuranceWrapper = styled.div`
   padding: 0.2rem 0.5rem;
   margin: 0.5rem;
   backdrop-filter: blur(10px);
@@ -71,7 +71,7 @@ const Button = styled.button`
   }
 `;
 
-const AccessoryList = ({handleClick}) => {
+const InsuranceList = ({handleClick}) => {
     return (
         <motion.div
             initial={{opacity: 0}}
@@ -80,16 +80,16 @@ const AccessoryList = ({handleClick}) => {
         >
             <Container>
                 <Wrapper>
-                    {Accessories.map((accessory) => (
-                        <Accessory key={accessory.id}>
-                            <Image src={accessory.img}/>
-                            <Title>{accessory.title}</Title>
-                            <Price>Cena: {accessory.price} PLN</Price>
-                            <Link to={"/accessory/" + accessory.id}>
+                    {Insurances.map((insurance) => (
+                        <InsuranceWrapper key={insurance.id}>
+                            <Image src={insurance.img}/>
+                            <Title>{insurance.title}</Title>
+                            <Price>Cena: {insurance.price} PLN</Price>
+                            <Link to={"/insurance/" + insurance.id}>
                                 <Button>Zobacz Więcej</Button>
                             </Link>
-                            <Button onClick={() => handleClick(accessory.id, 'accessory')}>Dodaj do koszyka</Button>
-                        </Accessory>
+                            <Button onClick={() => handleClick(insurance.id, 'insurance')}>Dodaj do koszyka</Button>
+                        </InsuranceWrapper>
                     ))}
                 </Wrapper>
             </Container>
@@ -97,4 +97,4 @@ const AccessoryList = ({handleClick}) => {
     );
 };
 
-export default AccessoryList;
+export default InsuranceList;

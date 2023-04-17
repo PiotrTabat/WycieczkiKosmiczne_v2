@@ -9,6 +9,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 8rem;
 `;
 
 const Wrapper = styled.div`
@@ -69,7 +70,7 @@ const Returns = () => {
                     <Subtitle>2. Zasady zwrotów</Subtitle>
                     <Content>
                         2.1. W przypadku odstąpienia od umowy, T-BAT TOUR zwróci Klientowi wszystkie otrzymane płatności, w tym koszty dostawy (z wyjątkiem dodatkowych kosztów wynikających z wyboru przez Klienta sposobu dostawy innego niż najtańszy oferowany przez T-BAT TOUR), niezwłocznie, a w każdym przypadku nie później niż 14 dni od dnia otrzymania informacji o odstąpieniu od umowy.<br />
-                        2.2. Zwrot płatności zostanie przeprowadzony przy użyciutakich samych środków płatniczych, jakie zostały użyte przez Klienta w pierwotnej transakcji, chyba że Klient wyraźnie zgodzi się na inne rozwiązanie. W każdym przypadku Klient nie poniesie żadnych opłat w związku z tym zwrotem.<br />
+                        2.2. Zwrot płatności zostanie przeprowadzony przy użyciu takich samych środków płatniczych, jakie zostały użyte przez Klienta w pierwotnej transakcji, chyba że Klient wyraźnie zgodzi się na inne rozwiązanie. W każdym przypadku Klient nie poniesie żadnych opłat w związku z tym zwrotem.<br />
                         2.3. T-BAT TOUR może wstrzymać się ze zwrotem płatności do czasu otrzymania przesyłki zwracanej przez Klienta lub do czasu dostarczenia przez Klienta dowodu jej wysyłki, w zależności od tego, które zdarzenie nastąpi wcześniej.
                     </Content>
                     <Subtitle>3. Zwrot przesyłki</Subtitle>

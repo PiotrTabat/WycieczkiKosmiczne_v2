@@ -112,7 +112,7 @@ const Footer = () => {
             </Right>
             <Copyright>
                 &copy; {new Date().getFullYear()} Pjoter Holding Sp. z o.o. Wszelkie prawa zastrzeżone.<br />
-                Projekt i wykonanie: T-Bat<br />
+                Projekt i wykonanie: T-BAT<br />
                 <br/>
                 Wszelkie prawa dotyczące treści i zdjęć umieszczonych na stronach sklepu należą do ich właścicieli.
             </Copyright>

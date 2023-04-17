@@ -8,9 +8,11 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 8rem;
 `;
 const Wrapper = styled.div`
-  padding: 1rem;
+  padding-top: 2rem;
+  margin-top: 3rem;
   background-color: #111111b2;
   width: 70%;
   display: flex;
@@ -101,7 +103,7 @@ const OrderButtonContainer = styled.div`
 `;
 
 
-const ShoppingCartItems = ({selectedTours, setSelectedTours, selectedAccessories, setSelectedAccessorries}) => {
+const ShoppingCartItems = ({selectedTours, setSelectedTours, selectedAccessories, setSelectedAccessorries, selectedInsurances, setSelectedInsurances}) => {
 
     const handleRemoveClick = (id, type) => {
         if(type==='tour'){
@@ -109,6 +111,7 @@ const ShoppingCartItems = ({selectedTours, setSelectedTours, selectedAccessories
         }
         else{
             setSelectedAccessorries(selectedAccessories.filter((accessory) => accessory.id !== id));
+            setSelectedInsurances(selectedInsurances.filter((insurance) => insurance.id !== id));
         }
     };
 
@@ -117,7 +120,7 @@ const ShoppingCartItems = ({selectedTours, setSelectedTours, selectedAccessories
     };
 
 
-    const totalAmount = selectedTours.reduce((total, tour) => total + tour.price, 0) + selectedAccessories.reduce((total, accessory) => total + accessory.price, 0);
+    const totalAmount = selectedTours.reduce((total, tour) => total + tour.price, 0) + selectedAccessories.reduce((total, accessory) => total + accessory.price, 0) + selectedInsurances.reduce((total, insurance) => total + insurance.price, 0);
 
 
     return (
@@ -139,9 +142,19 @@ const ShoppingCartItems = ({selectedTours, setSelectedTours, selectedAccessories
                         <Button onClick={() => handleRemoveClick(accessory.id, 'accessory')}>Usuń</Button>
                     </TourItem>
                 ))}
+                {selectedInsurances.map((insurance) => (
+                    <TourItem key={insurance.id}>
+                        <Image src={insurance.img} alt={insurance.title}/>
+                        <Title>{insurance.title}</Title>
+                        <Price>{insurance.price}</Price>
+                        <Button onClick={() => handleRemoveClick(insurance.id, 'insurance')}>Usuń</Button>
+                    </TourItem>
+                ))}
                 <OrderButtonContainer>
                     <TotalAmount>Łączna kwota: {totalAmount}</TotalAmount>
-                    <OrderButton onClick={handleOrderClick}>Złóż zamówienie</OrderButton>
+                    {(selectedTours.length > 0 || selectedAccessories.length > 0 || selectedInsurances.length > 0) && (
+                        <OrderButton onClick={handleOrderClick}>Złóż zamówienie</OrderButton>
+                    )}
                 </OrderButtonContainer>
             </Wrapper>
         </Container>

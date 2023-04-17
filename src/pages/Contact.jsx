@@ -10,6 +10,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #111111b2;
+  margin-top: 8rem;
 `;
 
 const Wrapper = styled.div`

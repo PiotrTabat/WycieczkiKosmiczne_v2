@@ -1,6 +1,6 @@
 import React from 'react'
 import {motion} from 'framer-motion';
-import {Accessories} from '../data';
+import {Insurances} from '../data';
 import {useParams} from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   border-radius: 5px;
   border: 1px solid #00a2ff;
 `
-const AccessoryWrapper = styled.div`
+const InsuranceWrapper = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -58,11 +58,11 @@ const Info = styled.p`
   margin-top: 2rem;
   font-size: 20px;
 `
-const AccessoryDescription = styled.p`
+const InsuranceDescription = styled.p`
   margin-top: 2rem;
   font-size: 20px;
 `
-const Accessory = () => {
+const Insurance = () => {
     const {id} = useParams();
     return (
         <motion.div
@@ -72,17 +72,17 @@ const Accessory = () => {
         >
             <Container>
                 <Wrapper>
-                    {Accessories.filter(tour => tour.id === id).map(filteredItem => (
-                        <AccessoryWrapper>
+                    {Insurances.filter(tour => tour.id === id).map(filteredItem => (
+                        <InsuranceWrapper>
                             <Image src={filteredItem.img}/>
                             <Description>
                                 <Title>{filteredItem.title}</Title>
                                 <Price>Cena: {filteredItem.price} PLN</Price>
                                 <Info>Co zawiera: <br/> <br/> {filteredItem.info}</Info>
-                                <AccessoryDescription>Opis: <br/> <br/> {filteredItem.description}
-                                </AccessoryDescription>
+                                <InsuranceDescription>Opis: <br/> <br/> {filteredItem.description}
+                                </InsuranceDescription>
                             </Description>
-                        </AccessoryWrapper>
+                        </InsuranceWrapper>
                     ))}
                 </Wrapper>
             </Container>
@@ -90,4 +90,4 @@ const Accessory = () => {
     )
 }
 
-export default Accessory
+export default Insurance

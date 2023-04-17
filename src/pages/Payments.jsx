@@ -12,6 +12,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 8rem;
 `;
 
 const Wrapper = styled.div`
@@ -81,6 +82,7 @@ const Payments = () => {
                     </PayIcon>
                     <Content>
                         1.1. W T-BAT TOUR akceptujemy następujące metody płatności:<br/>
+                        - Gotówka<br/>
                         - Karta kredytowa/debetowa (Visa, Mastercard, American Express)<br/>
                         - Przelew bankowy<br/>
                         - PayPal<br/>

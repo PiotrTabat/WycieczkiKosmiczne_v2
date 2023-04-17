@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { Link as ScrollLink } from 'react-scroll';
+import {Link} from 'react-router-dom';
+import {Link as ScrollLink} from 'react-scroll';
 
 const DropdownMenu = styled.div`
-  display: ${({ show }) => (show ? 'block' : 'none')};
+  display: ${({show}) => (show ? 'block' : 'none')};
   position: absolute;
   background-color: black;
   padding: 1rem;
@@ -34,7 +34,7 @@ const DropdownItem = styled.div`
   }
 `;
 
-const Dropdown = ({ isHomePage,show }) => {
+const Dropdown = ({isHomePage, show}) => {
     return (
         <DropdownMenu show={show}>
             {isHomePage ? (
@@ -45,14 +45,20 @@ const Dropdown = ({ isHomePage,show }) => {
                     <ScrollLink to="accessories" smooth={true} duration={500}>
                         <DropdownItem>Akcesoria</DropdownItem>
                     </ScrollLink>
+                    <ScrollLink to="insurances" smooth={true} duration={500}>
+                        <DropdownItem>Ubezpieczenia</DropdownItem>
+                    </ScrollLink>
                 </>
             ) : (
                 <>
-                    <Link to={{ pathname: '/', state: { scrollTo: 'tours' } }}>
+                    <Link to={{pathname: '/', state: {scrollTo: 'tours'}}}>
                         <DropdownItem>Wycieczki</DropdownItem>
                     </Link>
-                    <Link to={{ pathname: '/', state: { scrollTo: 'accessories' } }}>
+                    <Link to={{pathname: '/', state: {scrollTo: 'accessories'}}}>
                         <DropdownItem>Akcesoria</DropdownItem>
+                    </Link>
+                    <Link to={{pathname: '/', state: {scrollTo: 'insurances'}}}>
+                        <DropdownItem>Ubezpieczenia</DropdownItem>
                     </Link>
                 </>
             )}

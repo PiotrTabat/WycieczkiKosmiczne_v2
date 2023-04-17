@@ -5,7 +5,6 @@ import App from './App';
 import styled from 'styled-components';
 
 const AppContainer = styled.div`
-  margin-top: 8rem;
 `;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

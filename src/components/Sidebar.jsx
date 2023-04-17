@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { FaShoppingCart, FaTimes } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import logo from '../assets/logo.png'
+import logo from '../assets/logo_violet.png'
 
 const Container = styled.aside`
     position: fixed;

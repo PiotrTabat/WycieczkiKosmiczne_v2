@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components'
-import logo from '../assets/logo.png'
+import logo from '../assets/logo_violet.png'
 import {FaBars, FaShoppingCart} from 'react-icons/fa';
 import {Link} from 'react-router-dom';
 import {useLocation} from 'react-router-dom';
 import {animateScroll} from 'react-scroll';
 import Dropdown from './Dropdown';
-
-
-
 
 
 const Container = styled.div`
@@ -23,7 +20,7 @@ const Container = styled.div`
   z-index: ${({isOpen}) => (isOpen ? "0" : "100")};
   opacity: 0.8;
   transition: transform 0.4s ease-in-out;
-  transform: translateY(${({ isScrolling }) => (isScrolling ? "0" : "-100%")});
+  transform: translateY(${({isScrolling}) => (isScrolling ? "0" : "-100%")});
   @media screen and (max-width: 768px) {
     padding: 0.5rem 2rem;
   }
@@ -88,7 +85,7 @@ const MenuItem = styled.div`
   }
 `;
 
-const Navbar = ({ toggle }) => {
+const Navbar = ({toggle}) => {
     const location = useLocation();
     const isHomePage = location.pathname === "/";
     const [isScrolling, setIsScrolling] = useState(false);
@@ -112,7 +109,7 @@ const Navbar = ({ toggle }) => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [ lastScrollTop ]);
+    }, [lastScrollTop]);
 
     const scrollToTop = () => {
         animateScroll.scrollToTop();
@@ -136,7 +133,7 @@ const Navbar = ({ toggle }) => {
                         onMouseLeave={() => setShowDropdown(false)}
                     >
                         Produkty
-                        <Dropdown isHomePage={isHomePage} show={showDropdown} />
+                        <Dropdown isHomePage={isHomePage} show={showDropdown}/>
                     </MenuItem>
 
                     <Link to="/contact">
@@ -149,12 +146,12 @@ const Navbar = ({ toggle }) => {
 
                     <Link to="/shopping-cart">
                         <MenuItem>
-                            <FaShoppingCart fontSize={24} />
+                            <FaShoppingCart fontSize={24}/>
                         </MenuItem>
                     </Link>
                 </Right>
                 <Mobile>
-                    <FaBars fontSize="24px" cursor="pointer" z-index="999" onClick={toggle} />
+                    <FaBars fontSize="24px" cursor="pointer" z-index="999" onClick={toggle}/>
                 </Mobile>
             </Wrapper>
         </Container>

@@ -10,6 +10,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 8rem;
 `
 const Wrapper = styled.div`
   padding: 1rem 4rem;
@@ -59,6 +60,7 @@ const Plan = styled.p`
 const TourDescription = styled.p`
   margin-top: 2rem;
   font-size: 20px;
+  line-height: 1.5;
 `
 const Tour = () => {
     const {id} = useParams();

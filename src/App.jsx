@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 import Tour from './pages/Tour';
 import Accessory from './pages/Accessory';
 import AboutUs from './pages/AboutUs';
-import {Tours, Accessories} from './data';
+import {Tours, Accessories, Insurances} from './data';
 import ShoppingCart from './pages/ShoppingCart';
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
@@ -16,12 +16,14 @@ import Regulations from "./pages/Regulations";
 import Payments from "./pages/Payments";
 import Delivery from "./pages/Delivery";
 import Returns from "./pages/Returns";
+import Insurance from "./pages/Insurance";
 
 
 const App = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedTours, setSelectedTours] = useState([]);
     const [selectedAccessories, setSelectedAccessories] = useState([]);
+    const [selectedInsurances, setSelectedInsurances] = useState([]);
 
     const toggle = () => {
         setIsOpen(!isOpen);
@@ -46,6 +48,15 @@ const App = () => {
             } else {
                 setSelectedAccessories([...selectedAccessories, accessory]);
             }
+        } else if (type === 'insurance') {
+            const insurance = Insurances.find((insurance) => insurance.id === id);
+            if (selectedInsurances.find((insurance) => insurance.id === id)) {
+                setSelectedInsurances(
+                    selectedInsurances.filter((insurance) => insurance.id !== id)
+                );
+            } else {
+                setSelectedInsurances([...selectedInsurances, insurance]);
+            }
         }
     }
 
@@ -63,13 +74,15 @@ const App = () => {
                             <MainPage
                                 tours={Tours}
                                 accessories={Accessories}
+                                insurances={Insurances}
                                 handleClick={handleClick}
                             />
                         }
                     />
                     <Route path="tour/:id" element={<Tour/>}/>
-                    <Route path="/accessory/:id" element={<Accessory />} />
-                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/accessory/:id" element={<Accessory/>}/>
+                    <Route path="/insurance/:id" element={<Insurance/>}/>
+                    <Route path="/contact" element={<Contact/>}/>
                     <Route
                         path="/shopping-cart"
                         element={
@@ -78,17 +91,18 @@ const App = () => {
                                 setSelectedTours={setSelectedTours}
                                 selectedAccessories={selectedAccessories}
                                 setSelectedAccessories={setSelectedAccessories}
+                                selectedInsurances={selectedInsurances}
+                                setSelectedInsurances={setSelectedInsurances}
                             />
                         }
                     />
-                    <Route path="/shopping-cart" exact component={ShoppingCart} />
+                    <Route path="/shopping-cart" exact component={ShoppingCart}/>
                     <Route path="about-us" element={<AboutUs/>}/>
                     <Route path="privacy" element={<Privacy/>}/>
                     <Route path="regulations" element={<Regulations/>}/>
                     <Route path="payments" element={<Payments/>}/>
                     <Route path="delivery" element={<Delivery/>}/>
                     <Route path="returns" element={<Returns/>}/>
-
                 </Routes>
             </AnimatePresence>
             <RenderFooter/>
@@ -102,6 +116,6 @@ const RenderFooter = () => {
     const isContactPage = location.pathname === '/contact';
     const isAboutUsPage = location.pathname === '/about-us';
 
-    return !isShoppingCartPage && !isContactPage && !isAboutUsPage ? <Footer /> : null;
+    return !isShoppingCartPage && !isContactPage && !isAboutUsPage ? <Footer/> : null;
 };
 export default App;

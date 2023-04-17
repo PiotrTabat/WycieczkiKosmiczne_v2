@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
-import astronautSuit from '../assets/IMG_0761.JPG';
-import earthFromSpace from '../assets/IMG_0758.JPG';
+import astronautSuit from '../assets/Kombinezon_kosmonauty.JPG';
+import earthFromSpace from '../assets/Ziemia_z_kosmosu.JPG';
 
 
 const Container = styled.div`
@@ -12,6 +12,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 8rem;
 `;
 
 const Wrapper = styled.div`
