@@ -43,15 +43,17 @@ const CartProvider = ({children}) => {
                 const updatedItems = [...items];
                 updatedItems[index] = {
                     ...updatedItems[index],
-                    quantity: Math.max(updatedItems[index].quantity + delta, 0)
+                    quantity: Math.max(updatedItems[index].quantity + delta, 0),
                 };
-                setSelected(updatedItems.filter(item => item.quantity > 0));
+                setSelected(
+                    updatedItems.filter((item) => item.quantity > 0)
+                );
             }
         };
 
-        const productType = selectedTours.find(tour => tour.id === id)
+        const productType = selectedTours.find((tour) => tour.id === id)
             ? 'tour'
-            : selectedAccessories.find(accessory => accessory.id === id)
+            : selectedAccessories.find((accessory) => accessory.id === id)
                 ? 'accessory'
                 : 'insurance';
 
@@ -59,6 +61,7 @@ const CartProvider = ({children}) => {
         else if (productType === 'accessory') update(selectedAccessories, setSelectedAccessories);
         else if (productType === 'insurance') update(selectedInsurances, setSelectedInsurances);
     };
+
 
     const incrementItem = (id) => updateItemQuantity(id, 1);
     const decrementItem = (id) => updateItemQuantity(id, -1);

@@ -1,8 +1,11 @@
-import React, {lazy, Suspense} from 'react';
+import React, {Suspense} from 'react';
 import {motion} from 'framer-motion';
 import styled from 'styled-components';
 import backgroundImage from '../assets/MainPage_rakieta.jpg';
 import {useCart} from '../components/CartContext';
+import TourList from "../components/TourList";
+import AccessoryList from "../components/AccessoryList";
+import InsuranceList from "../components/InsuranceList";
 
 
 const Wrapper = styled.div`
@@ -42,9 +45,7 @@ const StyledH1 = styled.h1`
 
 const MainPage = ({tours, accessories, insurances}) => {
     const {handleClick} = useCart();
-    const TourList = lazy(() => import('../components/TourList'));
-    const AccessoryList = lazy(() => import('../components/AccessoryList'));
-    const InsuranceList = lazy(() => import('../components/InsuranceList'));
+
 
     return (
         <motion.div

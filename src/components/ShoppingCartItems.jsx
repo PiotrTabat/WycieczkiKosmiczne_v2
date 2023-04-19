@@ -156,9 +156,11 @@ const ShoppingCartItems = () => {
             if (index > -1) {
                 const updatedItems = [...items];
                 const newQuantity = updatedItems[index].quantity + delta;
-                if (newQuantity >= 0) {
+                if (newQuantity > 0) {
                     updatedItems[index] = {...updatedItems[index], quantity: newQuantity};
                     setSelected(updatedItems);
+                } else if (newQuantity === 0) {
+                    removeCartItem(id, type);
                 }
             }
         };
@@ -167,6 +169,7 @@ const ShoppingCartItems = () => {
         else if (type === 'accessory') update(selectedAccessories, setSelectedAccessories);
         else if (type === 'insurance') update(selectedInsurances, setSelectedInsurances);
     };
+
 
 
     const navigate = useNavigate();
@@ -180,6 +183,8 @@ const ShoppingCartItems = () => {
         selectedAccessories.reduce((total, accessory) => total + accessory.price * accessory.quantity, 0) +
         selectedInsurances.reduce((total, insurance) => total + insurance.price * insurance.quantity, 0);
     const displayTotalAmount = isNaN(totalAmount) ? 0 : totalAmount;
+
+
     return (
         <Container>
             <Wrapper>
