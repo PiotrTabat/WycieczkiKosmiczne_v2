@@ -132,12 +132,12 @@ const Contact = () => {
                         <ContactInfo>
                             T-BAT TOUR<br />
                             Pjoter Holding Sp.z.o.o.<br />
-                            ul. Reymonta 12<br />
-                            05-250 Radzymin, Polska<br /><br />
+                            ul. Kosmiczna 42<br />
+                            00-001 Warszawa, Polska<br /><br />
                             Telefon: +48 123 456 789<br />
                             Email: kontakt@tbattour.com<br /><br />
                             <Map
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2443.474469803286!2d21.18089501610387!3d52.41195447979305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecd8f2459a9d1%3A0x56f1a6f1fd2!2sReymonta%2012%2C%2005-250%20Radzymin%2C%20Poland!5e0!3m2!1sen!2sus!4v1621612459359!5m2!1sen!2sus"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2443.474469803286!2d21.18089501610387!3d52.41195447979305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecd8f2459a9d1%3A0x56f1a6f1fd2!2s%2042%2C%20%20Warszawa%2C%20Poland!5e0!3m2!1sen!2sus!4v1621612459359!5m2!1sen!2sus"
                                 allowFullScreen=""
                                 loading="lazy"
                             />

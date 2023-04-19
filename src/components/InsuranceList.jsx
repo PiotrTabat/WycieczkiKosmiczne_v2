@@ -11,15 +11,20 @@ const Container = styled.div`
   width: 100%;
 `;
 const Wrapper = styled.div`
-  padding: 1rem;
+  width: 80%;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: space-evenly;
+  margin: 0 auto;
+
+  padding: 1rem;
+  flex-wrap: wrap;
+
   @media screen and (max-width: 1000px) {
     height: calc(100vh - 134px);
     overflow-y: scroll;
   }
-`;
+`
 const InsuranceWrapper = styled.div`
   padding: 0.2rem 0.5rem;
   margin: 0.5rem;

@@ -6,10 +6,12 @@ import {useCart} from '../components/CartContext';
 import TourList from "../components/TourList";
 import AccessoryList from "../components/AccessoryList";
 import InsuranceList from "../components/InsuranceList";
+import CarouselPhotos from "../components/CarouselPhotos";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 
 const Wrapper = styled.div`
-  padding-bottom: 2rem;
+  padding-bottom: 8rem;
 `;
 
 const HomePageWrapper = styled.div`
@@ -72,6 +74,8 @@ const MainPage = ({tours, accessories, insurances}) => {
                 <Suspense fallback={<div>Ładowanie ubezpieczeń...</div>}>
                     <InsuranceList insurances={insurances} handleClick={handleClick}/>
                 </Suspense>
+                <StyledH1 id="images">Galeria zdjęć</StyledH1>
+                <CarouselPhotos/>
             </Wrapper>
         </motion.div>
     );
