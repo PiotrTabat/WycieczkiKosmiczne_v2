@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {Products} from '../data';
 import {Link} from 'react-router-dom';
 import {motion} from 'framer-motion';
+import { useCart } from './CartContext';
 
 const Container = styled.div`
   color: white !important;
@@ -71,7 +72,8 @@ const Button = styled.button`
   }
 `;
 
-const InsuranceList = ({handleClick}) => {
+const InsuranceList = () => {
+    const { addToCart } = useCart();
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
@@ -92,7 +94,7 @@ const InsuranceList = ({handleClick}) => {
                             <Link to={"/insurance/" + insurance.id} onClick={scrollToTop}>
                                 <Button>Zobacz Więcej</Button>
                             </Link>
-                            <Button onClick={(event) => {event.preventDefault(); handleClick(insurance.id, 'insurance')}}>Dodaj do koszyka</Button>
+                            <Button onClick={() => addToCart(insurance, 1)}>Dodaj do koszyka</Button>
                         </InsuranceWrapper>
                     ))}
                 </Wrapper>

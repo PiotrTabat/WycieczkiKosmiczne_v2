@@ -1,12 +1,12 @@
-import React, {useState, useEffect, useCallback} from 'react';
-import styled from 'styled-components'
-import logo from '../assets/logo_violet.png'
-import {FaBars, FaShoppingCart, FaUserAstronaut, FaSearch} from 'react-icons/fa';
-import {Link} from 'react-router-dom';
-import {useLocation} from 'react-router-dom';
-import {animateScroll} from 'react-scroll';
+import React, { useState, useEffect, useCallback } from 'react';
+import styled from 'styled-components';
+import { FaBars, FaShoppingCart, FaUserAstronaut, FaSearch } from 'react-icons/fa';
+import { Link, useLocation } from 'react-router-dom';
+import { animateScroll } from 'react-scroll';
 import Dropdown from './Dropdown';
-import {Products} from "../data";
+import { Products } from "../data";
+import { useCart} from "./CartContext";
+import logo from '../assets/logo_violet.png';
 
 
 const Container = styled.div`
@@ -16,7 +16,6 @@ const Container = styled.div`
   right: 0;
   padding: 0.5rem 4rem;
   background-color: black;
-  color: white !important;
   text-shadow: 0 0 10px #00a2ff;
   z-index: ${({isOpen}) => (isOpen ? "0" : "100")};
   opacity: 0.8;
@@ -24,6 +23,11 @@ const Container = styled.div`
   transform: translateY(${({isScrolling}) => (isScrolling ? "0" : "-100%")});
   @media screen and (max-width: 768px) {
     padding: 0.5rem 2rem;
+  }
+  &,
+  a {
+    color: white;
+    text-shadow: 0 0 10px #00a2ff;
   }
 `;
 
@@ -127,9 +131,23 @@ const SearchInput = styled.input`
   }
 `;
 
+const CartQuantity = styled.div`
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #da0101;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
-
-const Navbar = ({toggle}) => {
+    const Navbar = ({ toggle }) => {
     const location = useLocation();
     const isHomePage = location.pathname === "/";
     const [isScrolling, setIsScrolling] = useState(true);
@@ -138,7 +156,18 @@ const Navbar = ({toggle}) => {
     const [searchVisible, setSearchVisible] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
     const [searchValue, setSearchValue] = useState("");
+        const { cart, getTotalQuantity } = useCart();
+        const [cartQuantity, setCartQuantity] = useState(0);
 
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        animateScroll.scrollToTop();
+    };
+
+
+        useEffect(() => {
+            setCartQuantity(getTotalQuantity());
+        }, [cart, getTotalQuantity]);
 
     const handleSearchClick = () => {
         setSearchVisible(!searchVisible);
@@ -162,9 +191,6 @@ const Navbar = ({toggle}) => {
         };
     }, [handleScroll]);
 
-    const scrollToTop = () => {
-        animateScroll.scrollToTop();
-    };
     const searchProducts = (searchText) => {
         const filteredProducts = Products.filter((product) =>
             product.title.toLowerCase().includes(searchText.toLowerCase())
@@ -231,9 +257,10 @@ const Navbar = ({toggle}) => {
                         <MenuItem>O Nas</MenuItem>
                     </Link>
 
-                    <Link to="/shopping-cart">
+                    <Link to="/shopping-cart" onClick={scrollToTop}>
                         <MenuItem>
                             <FaShoppingCart fontSize={30}/>
+                            {cartQuantity > 0 && <CartQuantity>{cartQuantity}</CartQuantity>}
                         </MenuItem>
                     </Link>
                 </Right>
@@ -269,7 +296,7 @@ const SearchResultItem = styled.div`
   height: 2rem;
   display: flex;
   align-items: center;
-  
+
 
   &:hover {
     background-color: #333;

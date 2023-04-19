@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {Products} from '../data';
 import {Link} from 'react-router-dom';
 import {motion} from 'framer-motion';
+import { useCart } from './CartContext';
 
 const Container = styled.div`
   color: white !important;
@@ -71,9 +72,11 @@ const Button = styled.button`
   }
 `;
 
-const AccessoryList = ({handleClick}) => {
+const AccessoryList = () => {
+    const { addToCart } = useCart();
+
     const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({top: 0, behavior: 'smooth'});
     };
 
     return (
@@ -92,7 +95,7 @@ const AccessoryList = ({handleClick}) => {
                             <Link to={"/accessory/" + accessory.id} onClick={scrollToTop}>
                                 <Button>Zobacz Więcej</Button>
                             </Link>
-                            <Button onClick={(event) => {event.preventDefault(); handleClick(accessory.id, 'accessory')}}>Dodaj do koszyka</Button>
+                            <Button onClick={() => addToCart(accessory, 1)}>Dodaj do koszyka</Button>
                         </Accessory>
                     ))}
                 </Wrapper>

@@ -1,7 +1,8 @@
-import React, {lazy, Suspense} from 'react';
-import {motion} from 'framer-motion';
+import React, { lazy, Suspense } from 'react';
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import backgroundImage from '../assets/MainPage_rakieta.jpg';
+import { useCart } from '../components/CartContext';
 
 
 const Wrapper = styled.div`
@@ -39,7 +40,8 @@ const StyledH1 = styled.h1`
   text-shadow: 0 0 10px #00a2ff;
 `;
 
-const MainPage = ({tours, accessories, insurances, handleClick}) => {
+const MainPage = ({tours, accessories, insurances}) => {
+    const { handleClick } = useCart();
     const TourList = lazy(() => import('../components/TourList'));
     const AccessoryList = lazy(() => import('../components/AccessoryList'));
     const InsuranceList = lazy(() => import('../components/InsuranceList'));

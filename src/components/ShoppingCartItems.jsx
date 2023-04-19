@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import {useNavigate} from 'react-router-dom';
+import { useCart } from './CartContext';
+
+
 
 
 const Container = styled.div`
@@ -127,43 +130,46 @@ const Quantity = styled.h1`
   font-weight: 600;
 `;
 
+const ShoppingCartItems = () => {
+    const {
+        selectedTours,
+        setSelectedTours,
+        selectedAccessories,
+        setSelectedAccessories,
+        selectedInsurances,
+        setSelectedInsurances,
+    } = useCart();
 
-const ShoppingCartItems = ({
-                               selectedTours,
-                               setSelectedTours,
-                               selectedAccessories,
-                               setSelectedAccessories,
-                               selectedInsurances,
-                               setSelectedInsurances
-                           }) => {
 
-    const updateQuantity = (event, id, type, delta) => {
-        event.preventDefault();
+    const removeCartItem = (id, type) => {
+        const update = (items, setSelected) => {
+            const updatedItems = items.filter((item) => item.id !== id);
+            setSelected(updatedItems);
+        };
+
+        if (type === 'tour') update(selectedTours, setSelectedTours);
+        else if (type === 'accessory') update(selectedAccessories, setSelectedAccessories);
+        else if (type === 'insurance') update(selectedInsurances, setSelectedInsurances);
+    };
+
+    const updateCartItem = (id, type, delta) => {
         const update = (items, setSelected) => {
             const index = items.findIndex((item) => item.id === id);
             if (index > -1) {
                 const updatedItems = [...items];
-                updatedItems[index] = {...updatedItems[index], quantity: updatedItems[index].quantity + delta};
-                setSelected(updatedItems);
+                const newQuantity = updatedItems[index].quantity + delta;
+                if (newQuantity >= 0) {
+                    updatedItems[index] = { ...updatedItems[index], quantity: newQuantity };
+                    setSelected(updatedItems);
+                }
             }
         };
 
-        if (type === 'tour') {
-            update(selectedTours, setSelectedTours);
-        } else if (type === 'accessory') {
-            update(selectedAccessories, setSelectedAccessories);
-        } else if (type === 'insurance') {
-            update(selectedInsurances, setSelectedInsurances);
-        }
+        if (type === 'tour') update(selectedTours, setSelectedTours);
+        else if (type === 'accessory') update(selectedAccessories, setSelectedAccessories);
+        else if (type === 'insurance') update(selectedInsurances, setSelectedInsurances);
     };
-    const handleRemoveClick = (id, type) => {
-        if (type === 'tour') {
-            setSelectedTours(selectedTours.filter((item) => item.id !== id));
-        } else {
-            setSelectedAccessories(selectedAccessories.filter((accessory) => accessory.id !== id));
-            setSelectedInsurances(selectedInsurances.filter((insurance) => insurance.id !== id));
-        }
-    };
+
 
     const navigate = useNavigate();
 
@@ -171,25 +177,24 @@ const ShoppingCartItems = ({
         navigate('/login');
     };
 
-
-    const totalAmount = selectedTours.reduce((total, tour) => total + tour.price * tour.quantity, 0)
-        + selectedAccessories.reduce((total, accessory) => total + accessory.price * accessory.quantity, 0)
-        + selectedInsurances.reduce((total, insurance) => total + insurance.price * insurance.quantity, 0);
-
-
+    const totalAmount =
+        selectedTours.reduce((total, tour) => total + tour.price * tour.quantity, 0) +
+        selectedAccessories.reduce((total, accessory) => total + accessory.price * accessory.quantity, 0) +
+        selectedInsurances.reduce((total, insurance) => total + insurance.price * insurance.quantity, 0);
+    const displayTotalAmount = isNaN(totalAmount) ? 0 : totalAmount;
     return (
         <Container>
             <Wrapper>
-                {selectedTours.map((item) => (
-                    <TourItem key={item.id}>
-                        <Image src={item.img} alt={item.title}/>
-                        <Title>{item.title}</Title>
-                        <Price>{item.price}</Price>
-                        <Quantity>Ilość: {item.quantity}</Quantity>
-                        <Button onClick={() => handleRemoveClick(item.id, 'tour')}>Usuń</Button>
+                {selectedTours.map((tour) => (
+                    <TourItem key={tour.id}>
+                        <Image src={tour.img} alt={tour.title}/>
+                        <Title>{tour.title}</Title>
+                        <Price>{tour.price} PLN</Price>
+                        <Quantity>Ilość: {tour.quantity}</Quantity>
+                        <Button onClick={() => removeCartItem(tour.id, 'tour')}>Usuń</Button>
                         <QuantityButtons>
-                            <PlusButton onClick={() => updateQuantity(item.id, 'tour', 1)}>+</PlusButton>
-                            <MinusButton onClick={() => updateQuantity(item.id, 'tour', -1)}>-</MinusButton>
+                            <PlusButton onClick={() => updateCartItem(tour.id, 'tour', 1)}>+</PlusButton>
+                            <MinusButton onClick={() => updateCartItem(tour.id, 'tour', -1)}>-</MinusButton>
                         </QuantityButtons>
                     </TourItem>
                 ))}
@@ -198,12 +203,12 @@ const ShoppingCartItems = ({
                     <TourItem key={accessory.id}>
                         <Image src={accessory.img} alt={accessory.title}/>
                         <Title>{accessory.title}</Title>
-                        <Price>{accessory.price}</Price>
+                        <Price>{accessory.price} PLN</Price>
                         <Quantity>Ilość: {accessory.quantity}</Quantity>
-                        <Button onClick={() => handleRemoveClick(accessory.id, 'accessory')}>Usuń</Button>
+                        <Button onClick={() => removeCartItem(accessory.id, 'accessory')}>Usuń</Button>
                         <QuantityButtons>
-                            <PlusButton onClick={() => updateQuantity(accessory.id, 'accessory', 1)}>+</PlusButton>
-                            <MinusButton onClick={() => updateQuantity(accessory.id, 'accessory', -1)}>-</MinusButton>
+                            <PlusButton onClick={() => updateCartItem(accessory.id, 'accessory', 1)}>+</PlusButton>
+                            <MinusButton onClick={() => updateCartItem(accessory.id, 'accessory', -1)}>-</MinusButton>
                         </QuantityButtons>
                     </TourItem>
                 ))}
@@ -211,18 +216,18 @@ const ShoppingCartItems = ({
                     <TourItem key={insurance.id}>
                         <Image src={insurance.img} alt={insurance.title}/>
                         <Title>{insurance.title}</Title>
-                        <Price>{insurance.price}</Price>
+                        <Price>{insurance.price} PLN</Price>
                         <Quantity>Ilość: {insurance.quantity}</Quantity>
-                        <Button onClick={() => handleRemoveClick(insurance.id, 'insurance')}>Usuń</Button>
+                        <Button onClick={() => removeCartItem(insurance.id, 'insurance')}>Usuń</Button>
                         <QuantityButtons>
-                            <PlusButton onClick={() => updateQuantity(insurance.id, 'insurance', 1)}>+</PlusButton>
-                            <MinusButton onClick={() => updateQuantity(insurance.id, 'insurance', -1)}>-</MinusButton>
+                            <PlusButton onClick={() => updateCartItem(insurance.id, 'insurance', 1)}>+</PlusButton>
+                            <MinusButton onClick={() => updateCartItem(insurance.id, 'insurance', -1)}>-</MinusButton>
                         </QuantityButtons>
                     </TourItem>
                 ))}
 
                 <OrderButtonContainer>
-                    <TotalAmount>Łączna kwota: {totalAmount}</TotalAmount>
+                    <TotalAmount>Łączna kwota: {displayTotalAmount} PLN</TotalAmount>
                     {(selectedTours.length > 0 || selectedAccessories.length > 0 || selectedInsurances.length > 0) && (
                         <OrderButton onClick={handleOrderClick}>Złóż zamówienie</OrderButton>
                     )}
