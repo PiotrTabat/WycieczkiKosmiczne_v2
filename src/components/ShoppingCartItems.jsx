@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {useNavigate} from 'react-router-dom';
-import { useCart } from './CartContext';
-
-
+import {useCart} from './CartContext';
 
 
 const Container = styled.div`
@@ -159,7 +157,7 @@ const ShoppingCartItems = () => {
                 const updatedItems = [...items];
                 const newQuantity = updatedItems[index].quantity + delta;
                 if (newQuantity >= 0) {
-                    updatedItems[index] = { ...updatedItems[index], quantity: newQuantity };
+                    updatedItems[index] = {...updatedItems[index], quantity: newQuantity};
                     setSelected(updatedItems);
                 }
             }
@@ -174,7 +172,7 @@ const ShoppingCartItems = () => {
     const navigate = useNavigate();
 
     const handleOrderClick = () => {
-        navigate('/login');
+        navigate('/login-to-order');
     };
 
     const totalAmount =

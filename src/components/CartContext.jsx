@@ -1,15 +1,16 @@
-import React, { createContext, useContext, useState } from 'react';
-import { Products } from '../data';
+import React, {createContext, useContext, useState} from 'react';
+import {Products} from '../data';
 
 
 const CartContext = createContext();
 
-const CartProvider = ({ children }) => {
+const CartProvider = ({children}) => {
     const [selectedTours, setSelectedTours] = useState([]);
     const [selectedAccessories, setSelectedAccessories] = useState([]);
     const [selectedInsurances, setSelectedInsurances] = useState([]);
 
-    const handleClick = (id) => {
+    const handleClick = (event, id) => {
+        event.preventDefault();
         const item = Products.find((item) => item.id === id);
         const currentItems = selectedTours.filter((tour) => tour.id !== id);
         if (currentItems.length < selectedTours.length) {
@@ -40,7 +41,10 @@ const CartProvider = ({ children }) => {
             const index = items.findIndex((item) => item.id === id);
             if (index > -1) {
                 const updatedItems = [...items];
-                updatedItems[index] = { ...updatedItems[index], quantity: Math.max(updatedItems[index].quantity + delta, 0) };
+                updatedItems[index] = {
+                    ...updatedItems[index],
+                    quantity: Math.max(updatedItems[index].quantity + delta, 0)
+                };
                 setSelected(updatedItems.filter(item => item.quantity > 0));
             }
         };
@@ -60,16 +64,16 @@ const CartProvider = ({ children }) => {
     const decrementItem = (id) => updateItemQuantity(id, -1);
 
     const addToCart = (product, quantity) => {
-        const { id, type } = product;
+        const {id, type} = product;
 
         const update = (items, setSelected) => {
             const index = items.findIndex((item) => item.id === id);
             if (index > -1) {
                 const updatedItems = [...items];
-                updatedItems[index] = { ...updatedItems[index], quantity: updatedItems[index].quantity + quantity };
+                updatedItems[index] = {...updatedItems[index], quantity: updatedItems[index].quantity + quantity};
                 setSelected(updatedItems);
             } else {
-                setSelected((prevState) => [...prevState, { ...product, quantity }]);
+                setSelected((prevState) => [...prevState, {...product, quantity}]);
             }
         };
 
@@ -99,13 +103,12 @@ const CartProvider = ({ children }) => {
         </CartContext.Provider>
     );
 };
-    const useCart = () => {
-        const context = useContext(CartContext);
-        if (!context) {
-            throw new Error('useCart must be used within a CartProvider');
-        }
-        return context;
-    };
+const useCart = () => {
+    const context = useContext(CartContext);
+    if (!context) {
+        throw new Error('useCart must be used within a CartProvider');
+    }
+    return context;
+};
 
-    export { CartProvider, useCart };
-
+export {CartProvider, useCart};

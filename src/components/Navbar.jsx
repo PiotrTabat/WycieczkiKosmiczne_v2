@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import styled from 'styled-components';
-import { FaBars, FaShoppingCart, FaUserAstronaut, FaSearch } from 'react-icons/fa';
-import { Link, useLocation } from 'react-router-dom';
-import { animateScroll } from 'react-scroll';
+import {FaBars, FaShoppingCart, FaUserAstronaut, FaSearch} from 'react-icons/fa';
+import {Link, useLocation} from 'react-router-dom';
+import {animateScroll} from 'react-scroll';
 import Dropdown from './Dropdown';
-import { Products } from "../data";
-import { useCart} from "./CartContext";
+import {Products} from "../data";
+import {useCart} from "./CartContext";
 import logo from '../assets/logo_violet.png';
 
 
@@ -24,6 +24,7 @@ const Container = styled.div`
   @media screen and (max-width: 768px) {
     padding: 0.5rem 2rem;
   }
+
   &,
   a {
     color: white;
@@ -147,7 +148,7 @@ const CartQuantity = styled.div`
   align-items: center;
 `;
 
-    const Navbar = ({ toggle }) => {
+const Navbar = ({toggle}) => {
     const location = useLocation();
     const isHomePage = location.pathname === "/";
     const [isScrolling, setIsScrolling] = useState(true);
@@ -156,18 +157,18 @@ const CartQuantity = styled.div`
     const [searchVisible, setSearchVisible] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
     const [searchValue, setSearchValue] = useState("");
-        const { cart, getTotalQuantity } = useCart();
-        const [cartQuantity, setCartQuantity] = useState(0);
+    const {cart, getTotalQuantity} = useCart();
+    const [cartQuantity, setCartQuantity] = useState(0);
 
     const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({top: 0, behavior: 'smooth'});
         animateScroll.scrollToTop();
     };
 
 
-        useEffect(() => {
-            setCartQuantity(getTotalQuantity());
-        }, [cart, getTotalQuantity]);
+    useEffect(() => {
+        setCartQuantity(getTotalQuantity());
+    }, [cart, getTotalQuantity]);
 
     const handleSearchClick = () => {
         setSearchVisible(!searchVisible);
@@ -204,7 +205,7 @@ const CartQuantity = styled.div`
             <Wrapper>
                 <Left>
                     <Link to="/"><Logo src={logo}/></Link>
-                    <Link to="/login">
+                    <Link to="/login-to-user">
                         <UserIcon/>
                     </Link>
                     <SearchIcon onClick={handleSearchClick}/>

@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Products } from '../data';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { useCart } from './CartContext';
+import {Products} from '../data';
+import {Link} from 'react-router-dom';
+import {motion} from 'framer-motion';
+import {useCart} from './CartContext';
 
 
 const Container = styled.div`
@@ -73,23 +73,23 @@ const Button = styled.button`
 `
 
 const TourList = () => {
-    const { addToCart } = useCart();
+    const {addToCart} = useCart();
 
     const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({top: 0, behavior: 'smooth'});
     };
 
     return (
         <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1, transition: { duration: 1 } }}
-            exit={{ opacity: 0 }}
+            initial={{opacity: 0}}
+            animate={{opacity: 1, transition: {duration: 1}}}
+            exit={{opacity: 0}}
         >
             <Container>
                 <Wrapper>
                     {Products.filter((product) => product.type === 'tour').map((tour) => (
                         <Tour key={tour.id}>
-                            <Image src={tour.img} />
+                            <Image src={tour.img}/>
                             <Title>{tour.title}</Title>
                             <Price>Cena: {tour.price} PLN</Price>
                             <Link to={'/tour/' + tour.id} onClick={scrollToTop}>

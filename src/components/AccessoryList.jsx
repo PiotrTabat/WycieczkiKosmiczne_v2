@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {Products} from '../data';
 import {Link} from 'react-router-dom';
 import {motion} from 'framer-motion';
-import { useCart } from './CartContext';
+import {useCart} from './CartContext';
 
 const Container = styled.div`
   color: white !important;
@@ -73,7 +73,7 @@ const Button = styled.button`
 `;
 
 const AccessoryList = () => {
-    const { addToCart } = useCart();
+    const {addToCart} = useCart();
 
     const scrollToTop = () => {
         window.scrollTo({top: 0, behavior: 'smooth'});

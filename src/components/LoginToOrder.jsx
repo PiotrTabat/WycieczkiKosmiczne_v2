@@ -75,7 +75,7 @@ const ButtonsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 40%;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 `;
 
 const Button = styled.button`
@@ -120,6 +120,7 @@ const ErrorMessage = styled.p`
   font-size: 1.2rem;
   margin: 1rem 0;
 `;
+
 const SignUpLink = styled(Link)`
   color: #00a2ff;
   font-size: 1rem;
@@ -134,10 +135,17 @@ const SignUpLink = styled(Link)`
     color: #002c3f;
   }
 `;
+const WarningMessage = styled.p`
+  color: #FFA500;
+  font-size: 1.2rem;
+  margin: 1rem 0;
+`;
 
-const LoginPage = () => {
+
+const LoginToOrder = () => {
     const [emailIsValid, setEmailIsValid] = useState(true);
     const [passwordIsValid, setPasswordIsValid] = useState(true);
+    const [message, setMessage] = useState(""); // Move this line here
 
     const handleEmailChange = (event) => {
         const email = event.target.value;
@@ -152,7 +160,18 @@ const LoginPage = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Kod obsługujący logowanie (np. autentykacja, przekierowanie itp.)
+
+        const email = event.target.elements.email.value;
+        const password = event.target.elements.password.value;
+
+        if (email === 'pjoter@tbattour.com' && password === 'Wycieczkiwkosmos1') {
+            console.log('Authenticated');
+            setMessage("Witaj użytkowniku, zalogowałeś się na swoje konto.");
+
+        } else {
+            setEmailIsValid(false);
+            setPasswordIsValid(false);
+        }
     };
 
     const showError = !emailIsValid || !passwordIsValid;
@@ -165,14 +184,17 @@ const LoginPage = () => {
         >
             <MainContainer>
                 <Container>
-                    <Title>Login</Title>
+                    <Title>Logowanie do zamówienia</Title>
                     <Wrapper>
                         {showError && (
                             <ErrorMessage>Proszę wprowadzić prawidłowy adres e-mail i hasło.</ErrorMessage>
                         )}
+                        {message && <WarningMessage>{message}</WarningMessage>}
+                        {/* ... */}
                         <LoginForm onSubmit={handleSubmit}>
                             <Input
                                 type="email"
+                                name="email"
                                 placeholder="Email"
                                 required
                                 isInvalid={!emailIsValid}
@@ -180,6 +202,7 @@ const LoginPage = () => {
                             />
                             <Input
                                 type="password"
+                                name="password"
                                 placeholder="Hasło"
                                 required
                                 isInvalid={!passwordIsValid}
@@ -188,7 +211,8 @@ const LoginPage = () => {
                             <ButtonsContainer>
                                 <Button type="submit">Zaloguj się</Button>
                                 <Link to="/order">
-                                    <GuestButton onClick={() => {/* Tutaj dodaj funkcję obsługującą zakup jako gość */}}>
+                                    <GuestButton onClick={() => {
+                                    }}>
                                         Kup jako gość
                                     </GuestButton>
                                 </Link>
@@ -202,4 +226,4 @@ const LoginPage = () => {
     );
 };
 
-export default LoginPage;
+export default LoginToOrder;

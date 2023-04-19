@@ -39,8 +39,8 @@ const LogoWrapper = styled.h1`
     margin-bottom: 50px;
 `
 const Logo = styled.img`
-    width: 7rem;
-    height: 7rem;
+  width: 7rem;
+  height: 7rem;
 `;
 const MenuItems = styled.div`
 display: flex;

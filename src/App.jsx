@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
-import { AnimatePresence } from 'framer-motion';
+import {AnimatePresence} from 'framer-motion';
 import MainPage from './pages/MainPage';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import {Routes, Route, useLocation} from 'react-router-dom';
 import Footer from './components/Footer';
 import Tour from './pages/Tour';
 import Accessory from './pages/Accessory';
@@ -16,9 +16,10 @@ import Payments from "./pages/Payments";
 import Delivery from "./pages/Delivery";
 import Returns from "./pages/Returns";
 import Insurance from "./pages/Insurance";
-import LoginPage from './components/LoginPage';
+import LoginToOrder from './components/LoginToOrder';
 import OrderPage from "./components/OrderPage";
-import { CartProvider } from "./components/CartContext";
+import {CartProvider} from "./components/CartContext";
+import LoginToUser from "./components/LoginToUser";
 
 const App = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -32,41 +33,35 @@ const App = () => {
     return (
         <CartProvider>
             <div>
-                <Navbar isOpen={isOpen} toggle={toggle} />
-                <Sidebar isOpen={isOpen} toggle={toggle} />
+                <Navbar isOpen={isOpen} toggle={toggle}/>
+                <Sidebar isOpen={isOpen} toggle={toggle}/>
                 <AnimatePresence>
                     <Routes location={location} key={location.pathname}>
                         <Route
                             path="/"
-                            element={<MainPage />}
+                            element={<MainPage/>}
                         />
-                        <Route path="tour/:id" element={<Tour />} />
-                        <Route path="/accessory/:id" element={<Accessory />} />
-                        <Route path="/insurance/:id" element={<Insurance />} />
-                        <Route path="/contact" element={<Contact />} />
-                        <Route path="/shopping-cart" element={<ShoppingCart />} />
-                        <Route path="about-us" element={<AboutUs />} />
-                        <Route path="privacy" element={<Privacy />} />
-                        <Route path="regulations" element={<Regulations />} />
-                        <Route path="payments" element={<Payments />} />
-                        <Route path="delivery" element={<Delivery />} />
-                        <Route path="returns" element={<Returns />} />
-                        <Route path="login" element={<LoginPage />} />
-                        <Route path="order" element={<OrderPage />} />
+                        <Route path="tour/:id" element={<Tour/>}/>
+                        <Route path="/accessory/:id" element={<Accessory/>}/>
+                        <Route path="/insurance/:id" element={<Insurance/>}/>
+                        <Route path="/contact" element={<Contact/>}/>
+                        <Route path="/shopping-cart" element={<ShoppingCart/>}/>
+                        <Route path="about-us" element={<AboutUs/>}/>
+                        <Route path="privacy" element={<Privacy/>}/>
+                        <Route path="regulations" element={<Regulations/>}/>
+                        <Route path="payments" element={<Payments/>}/>
+                        <Route path="delivery" element={<Delivery/>}/>
+                        <Route path="returns" element={<Returns/>}/>
+                        <Route path="login-to-order" element={<LoginToOrder/>}/>
+                        <Route path="login-to-user" element={<LoginToUser/>}/>
+                        <Route path="order" element={<OrderPage/>}/>
                     </Routes>
                 </AnimatePresence>
-                <RenderFooter />
+                <Footer/>
             </div>
         </CartProvider>
     );
 };
 
-const RenderFooter = () => {
-    const location = useLocation();
-    const isShoppingCartPage = location.pathname === '/shopping-cart';
-    const isContactPage = location.pathname === '/contact';
-    const isAboutUsPage = location.pathname === '/about-us';
 
-    return !isShoppingCartPage && !isContactPage && !isAboutUsPage ? <Footer /> : null;
-};
 export default App;
