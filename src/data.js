@@ -1,9 +1,23 @@
+import moonImg from './assets/moon.jpg';
+import marsImg from './assets/mars.jpg';
+import wenusImg from './assets/wenus.jpg';
+import jowiszImg from './assets/jowisz.jpg';
+import issImg from './assets/iss.jpg';
+import uranImg from './assets/uran.jpg';
+import saturnImg from './assets/saturn.jpg';
+import neptunImg from './assets/neptun.jpg';
+import tshirtImg from './assets/t-shirt.jpg';
+import skarpetyImg from './assets/skarpety.jpg';
+import kombinezonImg from './assets/kombinezon.jpg';
+import rakietazabawkaImg from './assets/rakieta-zabawka.jpg';
+import naszywkiImg from './assets/naszywki.jpg';
+import insuranceImg from "./assets/insurance.jpg";
 
 export const Products = [
     {
         id: '1',
         type: 'tour',
-        img: 'https://ocdn.eu/pulscms-transforms/1/G-lk9kpTURBXy83YjQ4YmNiZTE4NTFkMjNiMTBjOTFlZjA5MGY5MzhkYS5qcGeTlQMANc0Gxs0Dz5MFzQSwzQKkkwmmODljMzdlBt4AAaEwAQ/superksiezyc-zdjecie-ilustracyjne.jpeg',
+        img: moonImg,
         title: 'Wycieczka na Księżyc',
         plan: '1. Przygotowanie do lotu\n2. Start\n3. Przylot na Księżyc\n4. Przejście do bazy księżycowej\n5. Obserwacja widoków\n6. Powrót na Ziemię',
         description: 'Wycieczka Księżycowy Raj: Przygoda Życia\n' +
@@ -47,7 +61,7 @@ export const Products = [
     {
         id: '2',
         type: 'tour',
-        img: 'https://ocdn.eu/pulscms-transforms/1/pmIk9kuTURBXy85OGQ0N2FjNS1lYjBhLTQ4NGQtODA2Ni1hYWY0ZDNkNzFmOGMuanBlZ5GTAs0FRs0DQN4AAaEwBQ',
+        img: marsImg,
         title: 'Wycieczka na Marsa',
         plan: '1. Przygotowanie do lotu\n2. Start\n3. Przylot na Marsa\n4. Przejście do hotelu\n5. Obserwacja widoków\n6. Powrót do Ziemi',
         description: 'Tytuł wycieczki: Odyseja na Marsa dla Dwojga\n' +
@@ -116,7 +130,7 @@ export const Products = [
     {
         id: '3',
         type: 'tour',
-        img: 'https://nauka.rocks/wp-content/uploads/2022/07/wenus-768x403.jpg',
+        img: wenusImg,
         title: 'Wycieczka na Wenus',
         plan: '1. Przygotowanie do lotu\n2. Start\n3. Przylot na Ziemię\n4. Przejście do hotelu\n5. Obserwacja widoków\n6. Powrót do Ziemi',
         description: 'Wycieczka na Wenus z biurem podróży T-BAT TOUR: Fascynująca Odyseja Wenecka\n' +
@@ -155,7 +169,7 @@ export const Products = [
     {
         id: '4',
         type: 'tour',
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx50DMQ6VqdG67OUhas3SZlX6IaF6P1RBdXcfn-MUOVLZO25mC2F1fjxpIyKLiLNP7YJM&usqp=CAU',
+        img: jowiszImg,
         title: 'Wycieczka na Jowisz',
         plan: '1. Przygotowanie do lotu\n2. Start\n3. Przylot na Jowisza\n4. Przejście do hotelu\n5. Obserwacja widoków\n6. Powrót do Ziemi',
         description: 'Uwaga: Ze względu na ekstremalne warunki panujące na Jowiszu, bezpośrednie lądowanie na planecie nie jest możliwe. Wycieczka obejmuje podróż do orbity wokół Jowisza, eksplorację jego księżyców oraz obserwację planety z bezpiecznej odległości.\n' +
@@ -190,7 +204,7 @@ export const Products = [
     {
         id: '5',
         type: 'tour',
-        img: 'https://ocdn.eu/pulscms-transforms/1/W6Dk9kuTURBXy84YTZjOTg0Ny05ODExLTQ0YzAtOTRmOC04NjdjMDBhOGM0NDIuanBlZ5GTAs0G280EON4AAaEwBQ',
+        img: issImg,
         title: 'Wycieczka na ISS',
         plan: '1. Przygotowanie do lotu\n2. Start\n3. Przylot na ISS\n4. Przejście do hotelu\n5. Obserwacja widoków\n6. Powrót do Ziemi',
         description: 'T-BAT TOUR prezentuje wyjątkową i ekskluzywną wycieczkę na Międzynarodową Stację Kosmiczną (ISS) – prawdziwą podróż życia! Teraz masz szansę przeżyć niezapomnianą przygodę i poznać życie astronautów z bliska. Przyłącz się do elitarnej grupy ludzi, którzy mieli okazję spędzić czas na orbitującej stacji kosmicznej. Oto, co czeka Cię podczas tej niezwykłej podróży:\n' +
@@ -229,7 +243,7 @@ export const Products = [
     {
         id: '6',
         type: 'tour',
-        img: 'https://t2.gstatic.com/licensed-image?q=tbn:ANd9GcSpSO4cQdDF2U3RHXDkKIfis9ofVxh_tC6PF6ZtuX-moYtAOUjruNXgJcfX9auDG9Vk',
+        img: uranImg,
         title: 'Wycieczka na Uran',
         plan: '1. Przygotowanie do lotu\n2. Start\n3. Przylot na Słońce\n4. Przejście do hotelu\n5. Obserwacja widoków\n6. Powrót do Ziemi',
         description: 'Biuro podróży T-BAT TOUR ma przyjemność zaprosić na niezapomnianą wycieczkę na Uran, siódmą planetę Układu Słonecznego, znaną ze swojej niezwykłej, przechylonej osi i jaskrawo-niebieskich pierścieni. Ta ekskluzywna wycieczka zapewni uczestnikom fascynujące doświadczenie, obejmujące naukę, przygodę i niepowtarzalne atrakcje. Wycieczka składa się z następujących etapów:\n' +
@@ -266,7 +280,7 @@ export const Products = [
     {
         id: '7',
         type: 'tour',
-        img: 'https://www.medianauka.pl/fizyka/grafika/big/saturn.jpg',
+        img: saturnImg,
         title: 'Wycieczka na Saturn',
         plan: '1. Przygotowanie do lotu\n2. Start\n3. Przylot na Słońce\n4. Przejście do hotelu\n5. Obserwacja widoków\n6. Powrót do Ziemi',
         description: 'Odkryj giganta gazowego, Jowisza, z naszą ekskluzywną wycieczką komercyjną, oferowaną przez biuro podróży T-BAT TOUR. Przyłącz się do naszej przygody życia, która pozwoli Ci zbadać tajemnice największej planety w naszym Układzie Słonecznym. Wycieczka łączy elementy nauki, przygody i unikalnych doświadczeń.\n' +
@@ -304,7 +318,7 @@ export const Products = [
     }, {
         id: '8',
         type: 'tour',
-        img: 'https://odkrywcyplanet.pl/wp-content/uploads/2018/07/planeta-Neptun.jpg',
+        img: neptunImg,
         title: 'Wycieczka na Neptun',
         plan: '1. Przygotowanie do lotu\n2. Start\n3. Przylot na Słońce\n4. Przejście do hotelu\n5. Obserwacja widoków\n6. Powrót do Ziemi',
         description: 'Odkryj nieznane zakątki kosmosu z biurem podróży T-BAT TOUR i dołącz do nas na niezapomnianej wycieczce na Neptuna! Jako druga osoba, będziesz miał okazję przeżyć unikalne doświadczenie podczas tej wyjątkowej podróży do jednego z najbardziej tajemniczych i fascynujących miejsc w Układzie Słonecznym. Wycieczka składa się z następujących etapów:\n' +
@@ -346,7 +360,7 @@ export const Products = [
     {
         id: '9',
         type: 'accessory',
-        img: 'https://m.media-amazon.com/images/I/41ck7Aww8jL._AC_SY1000_.jpg',
+        img: tshirtImg,
         title: 'Koszulka',
         info: 'Koszulka z motywem podróży kosmicznych',
         description: 'Koszulka "Astronauta - NASA & Apollo 11" to stylowy i oryginalny sposób na wyrażenie swojej pasji do eksploracji kosmosu oraz uczczenie legendarnej misji Apollo 11. Wykonana z najwyższej jakości bawełny, zapewnia komfort noszenia i trwałość.\n' +
@@ -363,7 +377,7 @@ export const Products = [
     {
         id: '10',
         type: 'accessory',
-        img: 'https://www.salon-sloneczna.pl/6-share/2021-kosmiczna-rakieta-astronauta-mars-skarpetki-z_38031-pic.jpg',
+        img: skarpetyImg,
         title: 'Skarpety',
         info: 'Skarpety z rakietą kosmiczną',
         description: 'Skarpety z motywem rakiety to zabawny i oryginalny dodatek do garderoby każdego miłośnika kosmosu i eksploracji. Wykonane z wysokiej jakości materiałów, takich jak bawełna, poliester i elastan, zapewniają komfort noszenia, elastyczność oraz doskonałe dopasowanie.\n' +
@@ -378,7 +392,7 @@ export const Products = [
     {
         id: '11',
         type: 'accessory',
-        img: 'https://static3.redcart.pl/templates/images/thumb/4608/1024/1024/pl/0/templates/images/products/4608/f7a51391f3f577f47c0b1428da99756c.jpg',
+        img: kombinezonImg,
         title: 'Kombinezon kosmonauty',
         info: 'Kombinezon kosmonauty, hełm, rękawice, buty',
         description: 'Kombinezon astronauty to wyjątkowe akcesorium, które można nabyć w naszym sklepie internetowym. Idealny dla miłośników kosmosu i eksploracji, ten kombinezon sprawi, że poczujesz się jak prawdziwy astronauta gotowy do odkrywania nieznanego.\n' +
@@ -397,7 +411,7 @@ export const Products = [
     {
         id: '12',
         type: 'accessory',
-        img: 'https://leantoys.pl/pol_pl_Rakieta-Kosmiczna-Statek-Kosmiczny-Kosmos-Swiatlo-Dzwiek-12657_4.png',
+        img: rakietazabawkaImg,
         title: 'Rakieta kosmiczna - zabawka',
         info: 'Rakieta kosmiczna ze statekiem kosmicznym',
         description: 'Ta biała rakieta z pomarańczowym zbiornikiem na paliwo to doskonałe akcesorium dla małych i dużych miłośników kosmosu, dostępne w naszym sklepie internetowym.\n' +
@@ -414,7 +428,7 @@ export const Products = [
     {
         id: '13',
         type: 'accessory',
-        img: 'https://m.media-amazon.com/images/I/71jBBJePEIL._AC_UF1000,1000_QL80_.jpg',
+        img: naszywkiImg,
         title: 'Plakietki - naszywki',
         info: 'Plakietki NASA, NASA logo, NASA patch',
         description: 'Zapraszamy do odkrycia naszych unikalnych naszywek z motywem eksploracji kosmosu, dostępnych w naszym sklepie internetowym. Te stylowe i oryginalne akcesoria to doskonały sposób na wyrażenie swojej pasji do nauki, kosmonautyki i odkrywania nowych światów.\n' +
@@ -436,7 +450,7 @@ export const Products = [
     {
         id: '14',
         type: 'insurance',
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPKwQzCToyl6M8yXs9PKkT7lDx2f5fSp55vTqMhKv7T3oSiMPqE3yXZRWEqirKIBYslMA&usqp=CAU',
+        img: insuranceImg,
         title: 'Ubezpieczenie podstawowe',
         info: 'Ubezpieczenie kosmiczne podstawowe',
         description: 'T-BAT TOUR oferuje kilka opcji ubezpieczeń dla wycieczek w kosmos, aby dostosować się do indywidualnych potrzeb klientów. Ubezpieczenie kosmiczne podstawowe to najprostsza i najbardziej ekonomiczna opcja, która obejmuje podstawowe aspekty ochrony ubezpieczeniowej podczas podróży kosmicznej.\n' +
@@ -457,7 +471,7 @@ export const Products = [
     {
         id: '15',
         type: 'insurance',
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPKwQzCToyl6M8yXs9PKkT7lDx2f5fSp55vTqMhKv7T3oSiMPqE3yXZRWEqirKIBYslMA&usqp=CAU',
+        img: insuranceImg,
         title: 'Ubezpieczenie rozszerzone',
         info: 'Ubezpieczenie kosmiczne rozszerzone',
         description: 'T-BAT TOUR oprócz ubezpieczenia kosmicznego podstawowego oferuje również ubezpieczenie kosmiczne rozszerzone. To średnia opcja ubezpieczeniowa, która oferuje szerszy zakres ochrony niż ubezpieczenie podstawowe, uwzględniając dodatkowe koszty związane z podróżą kosmiczną.\n' +
@@ -478,7 +492,7 @@ export const Products = [
     {
         id: '16',
         type: 'insurance',
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPKwQzCToyl6M8yXs9PKkT7lDx2f5fSp55vTqMhKv7T3oSiMPqE3yXZRWEqirKIBYslMA&usqp=CAU',
+        img: insuranceImg,
         title: 'Ubezpieczenie premium',
         info: 'Ubezpieczenie kosmiczne premium',
         description: 'Ubezpieczenie kosmiczne premium to najbardziej kompleksowa opcja ubezpieczeniowa, która zapewnia najszerszy zakres ochrony dla klientów podróżujących w kosmos.\n' +

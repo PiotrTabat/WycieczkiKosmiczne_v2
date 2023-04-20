@@ -1,8 +1,9 @@
-import React from 'react'
-import {motion} from 'framer-motion';
-import {Products} from '../data';
-import {useParams} from 'react-router-dom';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Products } from '../data';
 import styled from 'styled-components';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useCart } from '../components/CartContext';
 
 const Container = styled.div`
   color: white;
@@ -62,24 +63,87 @@ const AccessoryDescription = styled.p`
   margin-top: 2rem;
   font-size: 20px;
 `
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 3rem;
+`
+
+const ArrowButton = styled.button`
+  background: none;
+  border: none;
+  color: #00a2ff;
+  font-size: 20px;
+  cursor: pointer;
+
+  &:hover {
+    color: #0080cc;
+  }
+`
+
+const AddToCartButton = styled.button`
+  background: #00a2ff;
+  border: none;
+  color: white;
+  font-size: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background: #0080cc;
+  }
+`
 const Accessory = () => {
-    const {id} = useParams();
+    const { id } = useParams();
+    const { addToCart } = useCart();
+    const navigate = useNavigate();
+    const currentIndex = Products.findIndex((product) => product.id === id);
+
+    const handlePrevious = () => {
+        const prevIndex = currentIndex > 0 ? currentIndex - 1 : Products.length - 1;
+        navigate(`/accessory/${Products[prevIndex].id}`);
+    };
+
+    const handleAddToCart = (item) => {
+        addToCart(item, 1);
+    };
+
+    const handleNext = () => {
+        const nextIndex = (currentIndex + 1) % Products.length;
+        navigate(`/accessory/${Products[nextIndex].id}`);
+    };
+
+
     return (
         <motion.div
-            initial={{opacity: 0}}
-            animate={{opacity: 1, transition: {duration: 1}}}
-            exit={{opacity: 0}}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 1 } }}
+            exit={{ opacity: 0 }}
         >
             <Container>
                 <Wrapper>
-                    {Products.filter(tour => tour.id === id).map(filteredItem => (
+                    {Products.filter((accessory) => accessory.id === id).map((filteredItem) => (
                         <AccessoryWrapper>
-                            <Image src={filteredItem.img}/>
+                            <Image src={filteredItem.img} />
                             <Description>
                                 <Title>{filteredItem.title}</Title>
+                                <ButtonWrapper>
+                                    <ArrowButton onClick={handlePrevious}>Poprzednia</ArrowButton>
+                                    <AddToCartButton onClick={() => handleAddToCart(filteredItem)}>
+                                        Dodaj do koszyka
+                                    </AddToCartButton>
+                                    <ArrowButton onClick={handleNext}>Następna</ArrowButton>
+                                </ButtonWrapper>
                                 <Price>Cena: {filteredItem.price} PLN</Price>
-                                <Info>Co zawiera: <br/> <br/> {filteredItem.info}</Info>
-                                <AccessoryDescription>Opis: <br/> <br/> {filteredItem.description}
+                                <Info>
+                                    Co zawiera: <br /> <br /> {filteredItem.plan}
+                                </Info>
+                                <AccessoryDescription>
+                                    Opis wycieczki: <br /> <br /> {filteredItem.description}
                                 </AccessoryDescription>
                             </Description>
                         </AccessoryWrapper>
@@ -87,7 +151,7 @@ const Accessory = () => {
                 </Wrapper>
             </Container>
         </motion.div>
-    )
-}
+    );
+};
 
 export default Accessory

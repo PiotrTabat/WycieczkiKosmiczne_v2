@@ -2,6 +2,7 @@ import React, {createContext, useContext, useState} from 'react';
 import {Products} from '../data';
 
 
+
 const CartContext = createContext();
 
 const CartProvider = ({children}) => {

@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 const HomePageWrapper = styled.div`
   height: 100vh;
   width: 100%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url(${backgroundImage});
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${backgroundImage});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

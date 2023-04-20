@@ -1,9 +1,16 @@
 import React from 'react';
-import galacticImg from "../assets/Galactik.jpg";
-import issImg from "../assets/ISS_SpaceShuttle.jpg";
-import atlantisImg from "../assets/SpaceShuttle_Atlantis.jpg";
-import technicalImg from "../assets/SpaceShuttleTechnical.jpg";
+import galacticImg from "../assets/galactika.jpg";
+import issImg from "../assets/issSpaceShuttle.jpg";
+import atlantisImg from "../assets/SpaceShuttleAtlantis.jpg";
+import spaceShuttleTechnical2Img from "../assets/spaceShuttleTechnical2.jpg";
 import walkingSpaceImg from "../assets/WolkingSpace.jpg";
+import earthOnSpaceImg from "../assets/earthOnSpace.jpg";
+import galactik3Img from "../assets/galactik3.jpg";
+import galactik_2Img from "../assets/galactik_2.jpg";
+import issSpaceShuttleImg from "../assets/issSpaceShuttle.jpg";
+import sateliteImg from "../assets/satelite.jpg";
+
+
 
 
 
@@ -29,25 +36,47 @@ const CarouselWrapper = styled.div`
   margin-top: 4rem;
 `;
 
+const StyledImage = styled.img`
+  width: 80%;
+  height: 80%;
+  object-fit: cover;
+`;
+
+
 const CarouselPhotos = () => {
     return (
         <Container>
             <CarouselWrapper>
-                <Carousel autoPlay interval={1500} infiniteLoop stopOnHover={false}>
+                <Carousel autoPlay interval={3000} infiniteLoop stopOnHover={false}>
                     <div>
-                        <img src={galacticImg} alt="Galaktyka"/>
+                        <StyledImage src={galacticImg} alt="Galaktyka"/>
                     </div>
                     <div>
-                        <img src={issImg} alt="Międzynarodowa Stacja Kosmiczna"/>
+                        <StyledImage src={issImg} alt="Międzynarodowa Stacja Kosmiczna"/>
                     </div>
                     <div>
-                        <img src={atlantisImg} alt="Prom kosmiczny Atlantis"/>
+                        <StyledImage src={atlantisImg} alt="Prom kosmiczny Atlantis"/>
                     </div>
                     <div>
-                        <img src={technicalImg} alt="Rysunek techniczny promu kosmicznego"/>
+                        <StyledImage src={spaceShuttleTechnical2Img} alt="Rysunek techniczny promu kosmicznego"/>
                     </div>
                     <div>
-                        <img src={walkingSpaceImg} alt="Spacer w kosmosie"/>
+                        <StyledImage src={walkingSpaceImg} alt="Spacer w kosmosie"/>
+                    </div>
+                    <div>
+                        <StyledImage src={earthOnSpaceImg} alt="Ziemia z kosmosu"/>
+                    </div>
+                    <div>
+                        <StyledImage src={galactik3Img} alt="Galaktyka 3"/>
+                    </div>
+                    <div>
+                        <StyledImage src={galactik_2Img} alt="Galaktyka 2"/>
+                    </div>
+                    <div>
+                        <StyledImage src={issSpaceShuttleImg} alt="prom i stacja kosmiczna"/>
+                    </div>
+                    <div>
+                        <StyledImage src={sateliteImg} alt="Satelita"/>
                     </div>
                 </Carousel>
             </CarouselWrapper>

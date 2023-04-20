@@ -69,7 +69,7 @@ const Privacy = () => {
                     </Content>
                     <Subtitle>2. Administrator danych</Subtitle>
                     <Content>
-                        Administratorem danych osobowych jest Ploter Holding Sp.z.o.o., ul. Kosmiczna 42, 00-001
+                        Administratorem danych osobowych jest Pjoter Holding Sp.z.o.o., ul. Kosmiczna 42, 00-001
                         Warszawa, Polska. W razie pytań dotyczących przetwarzania danych osobowych, prosimy o kontakt
                         pod adresem e-mail: kontakt@pjoter.t-bat.com.
                     </Content>
