@@ -175,13 +175,18 @@ const Navbar = ({toggle}) => {
     };
 
     const handleScroll = useCallback(() => {
-        const currentScrollTop = window.pageYOffset
-        if (currentScrollTop > lastScrollTop) {
-            setIsScrolling(false);
-        } else {
-            setIsScrolling(true);
-        }
-        setLastScrollTop(currentScrollTop <= 0 ? 0 : currentScrollTop);
+        const currentScrollTop = window.pageYOffset;
+
+        const onScroll = () => {
+            if (currentScrollTop > lastScrollTop) {
+                setIsScrolling(false);
+            } else {
+                setIsScrolling(true);
+            }
+            setLastScrollTop(currentScrollTop <= 0 ? 0 : currentScrollTop);
+        };
+
+        requestAnimationFrame(onScroll);
     }, [lastScrollTop]);
 
     useEffect(() => {
@@ -191,6 +196,7 @@ const Navbar = ({toggle}) => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, [handleScroll]);
+
 
     const searchProducts = (searchText) => {
         const filteredProducts = Products.filter((product) =>
