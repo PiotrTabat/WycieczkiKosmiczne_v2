@@ -145,7 +145,7 @@ const WarningMessage = styled.p`
 const LoginToOrder = () => {
     const [emailIsValid, setEmailIsValid] = useState(true);
     const [passwordIsValid, setPasswordIsValid] = useState(true);
-    const [message, setMessage] = useState(""); // Move this line here
+    const [message, setMessage] = useState("");
 
     const handleEmailChange = (event) => {
         const email = event.target.value;
@@ -218,7 +218,7 @@ const LoginToOrder = () => {
                                 </Link>
                             </ButtonsContainer>
                         </LoginForm>
-                        <SignUpLink to="/signup">Utwórz konto</SignUpLink>
+                        <SignUpLink to="/register">Utwórz konto</SignUpLink>
                     </Wrapper>
                 </Container>
             </MainContainer>

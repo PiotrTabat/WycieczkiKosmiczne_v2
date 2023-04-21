@@ -20,6 +20,7 @@ import LoginToOrder from './components/LoginToOrder';
 import OrderPage from "./components/OrderPage";
 import {CartProvider} from "./components/CartContext";
 import LoginToUser from "./components/LoginToUser";
+import Register from "./components/Register";
 
 const App = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -55,6 +56,7 @@ const App = () => {
                         <Route path="login-to-order" element={<LoginToOrder/>}/>
                         <Route path="login-to-user" element={<LoginToUser/>}/>
                         <Route path="order" element={<OrderPage/>}/>
+                        <Route path="register" element={<Register/>}/>
                     </Routes>
                 </AnimatePresence>
                 <Footer/>

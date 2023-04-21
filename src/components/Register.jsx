@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
-import {Link} from 'react-router-dom';
+import {FaArrowLeft} from 'react-icons/fa'
 
 
 const MainContainer = styled.div`
@@ -31,6 +31,13 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-around;
 `;
+const RegisterForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  margin-top: 2rem;
+`;
 
 const Title = styled.h1`
   color: white;
@@ -39,13 +46,6 @@ const Title = styled.h1`
   margin: 2rem 2rem;
   font-weight: 600;
   text-shadow: 0 0 10px #00a2ff;
-`;
-
-const LoginForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 90%;
 `;
 
 const Input = styled.input`
@@ -72,18 +72,21 @@ const Input = styled.input`
   }
 `;
 
-const ButtonsContainer = styled.div`
+const ButtonsWrapper = styled.div`
   display: flex;
   justify-content: center;
-  width: 40%;
-  margin-top: 1.5rem;
+  width: 100%;
+  gap: 2rem;
+  margin-right: 2rem;
 `;
+
 
 const Button = styled.button`
   background-color: #0079c0;
   color: white;
   font-size: 1rem;
   padding: 0.5rem 2rem;
+  margin: 2rem 0;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -98,36 +101,35 @@ const Button = styled.button`
   }
 `;
 
-const ErrorMessage = styled.p`
-  color: #ff0000;
-  font-size: 1.2rem;
-  margin: 1rem 0;
-`;
-const SignUpLink = styled(Link)`
+const BackButton = styled.button`
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
   color: #00a2ff;
-  font-size: 1rem;
-  text-decoration: none;
+  font-size: 1.2rem;
+  cursor: pointer;
   transition: color 0.2s ease-in-out;
 
   &:hover {
-    color: #0174a9;
+    color: #01608f;
   }
 
   &:active {
     color: #002c3f;
   }
 `;
-
 const WarningMessage = styled.p`
   color: #FFA500;
   font-size: 1.2rem;
   margin: 1rem 0;
 `;
 
-const LoginToUser = () => {
+
+const Register = () => {
     const [emailIsValid, setEmailIsValid] = useState(true);
-    const [passwordIsValid, setPasswordIsValid] = useState(true);
-    const [message, setMessage] = useState(""); // Move this line here
+    const [message, setMessage] = useState("");
+
 
     const handleEmailChange = (event) => {
         const email = event.target.value;
@@ -135,28 +137,15 @@ const LoginToUser = () => {
         setEmailIsValid(emailRegex.test(email));
     };
 
-    const handlePasswordChange = (event) => {
-        const password = event.target.value;
-        setPasswordIsValid(password.length > 0);
-    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        const email = event.target.elements.email.value;
-        const password = event.target.elements.password.value;
+        setMessage("Witaj użytkowniku, właśnie utworzyłeś swoje konto.");
 
-        if (email === 'pjoter@tbattour.com' && password === 'Wycieczkiwkosmos1') {
-            console.log('Authenticated');
-            setMessage("Witaj użytkowniku, zalogowałeś się na swoje konto.");
-
-        } else {
-            setEmailIsValid(false);
-            setPasswordIsValid(false);
-        }
+        // kod do logiki rejestracji użytkownika
     };
 
-    const showError = !emailIsValid || !passwordIsValid;
 
     return (
         <motion.div
@@ -166,14 +155,23 @@ const LoginToUser = () => {
         >
             <MainContainer>
                 <Container>
-                    <Title>Konto klienta</Title>
+                    <Title>Utwórz konto</Title>
                     <Wrapper>
-                        {showError && (
-                            <ErrorMessage>Proszę wprowadzić prawidłowy adres e-mail i hasło.</ErrorMessage>
-                        )}
                         {message && <WarningMessage>{message}</WarningMessage>}
                         {/* ... */}
-                        <LoginForm onSubmit={handleSubmit}>
+                        <RegisterForm onSubmit={handleSubmit}>
+                            <Input
+                                type="text"
+                                name="firstName"
+                                placeholder="Imię"
+                                required
+                            />
+                            <Input
+                                type="text"
+                                name="lastName"
+                                placeholder="Nazwisko"
+                                required
+                            />
                             <Input
                                 type="email"
                                 name="email"
@@ -186,15 +184,14 @@ const LoginToUser = () => {
                                 type="password"
                                 name="password"
                                 placeholder="Hasło"
-                                required
-                                isInvalid={!passwordIsValid}
-                                onChange={handlePasswordChange}
                             />
-                            <ButtonsContainer>
-                                <Button type="submit">Zaloguj się</Button>
-                            </ButtonsContainer>
-                        </LoginForm>
-                        <SignUpLink to="/register">Utwórz konto</SignUpLink>
+                            <ButtonsWrapper>
+                                <BackButton onClick={() => window.history.back()}>
+                                    <FaArrowLeft fontSize={30}/>
+                                </BackButton>
+                                <Button type="/submit">Utwórz konto</Button>
+                            </ButtonsWrapper>
+                        </RegisterForm>
                     </Wrapper>
                 </Container>
             </MainContainer>
@@ -202,4 +199,4 @@ const LoginToUser = () => {
     );
 };
 
-export default LoginToUser;
+export default Register;
