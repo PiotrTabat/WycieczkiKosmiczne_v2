@@ -66,11 +66,48 @@ const InsuranceDescription = styled.p`
 `
 const ButtonWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   width: 100%;
   margin-top: 3rem;
 `
+const ArrowWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+  width: 100%;
+    justify-content: center;
+  gap: 3rem;
+  `
+
+const Arrow = styled.div`
+  width: 30px;
+  height: 30px;
+  border-bottom: 3px solid white;
+  border-right: 3px solid white;
+  transform: rotate(45deg);
+  animation: bounce 1.5s infinite;
+  cursor: pointer;
+
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0) rotate(45deg);
+    }
+    40% {
+      transform: translateY(-15px) rotate(45deg);
+    }
+    60% {
+      transform: translateY(-10px) rotate(45deg);
+    }
+  }
+
+  &:hover {
+    border-bottom: 3px solid #005283;
+    border-right: 3px solid #005283;
+  }
+`;
 
 const ArrowButton = styled.button`
   background: none;
@@ -85,6 +122,8 @@ const ArrowButton = styled.button`
 `
 
 const AddToCartButton = styled.button`
+  display: flex;
+  align-items: center;
   background: #00a2ff;
   border: none;
   color: white;
@@ -92,11 +131,17 @@ const AddToCartButton = styled.button`
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+  margin-right: 6rem;
 
   &:hover {
-    background: #0080cc;
+    background: #005283;
   }
-`
+
+  &:active {
+    transform: scale(0.95);
+    background-color: #002134;
+  }
+`;
 const Insurance = () => {
     const { id } = useParams();
     const { addToCart } = useCart();
@@ -116,7 +161,12 @@ const Insurance = () => {
         const nextIndex = (currentIndex + 1) % Products.length;
         navigate(`/insurance/${Products[nextIndex].id}`);
     };
-
+    const scrollToBottom = () => {
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth',
+        });
+    };
 
     return (
         <motion.div
@@ -133,9 +183,12 @@ const Insurance = () => {
                                 <Title>{filteredItem.title}</Title>
                                 <ButtonWrapper>
                                     <ArrowButton onClick={handlePrevious}>Poprzednia</ArrowButton>
+                                    <ArrowWrapper>
+                                    <Arrow onClick={scrollToBottom} />
                                     <AddToCartButton onClick={() => handleAddToCart(filteredItem)}>
                                         Dodaj do koszyka
                                     </AddToCartButton>
+                                    </ArrowWrapper>
                                     <ArrowButton onClick={handleNext}>Następna</ArrowButton>
                                 </ButtonWrapper>
                                 <Price>Cena: {filteredItem.price} PLN</Price>
