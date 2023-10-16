@@ -4,6 +4,7 @@ import {Products} from '../data';
 import {Link} from 'react-router-dom';
 import {motion} from 'framer-motion';
 import {useCart} from './CartContext';
+import {useState} from 'react';
 
 
 const Container = styled.div`
@@ -17,7 +18,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-evenly;
   margin: 0 auto;
-  
+
   padding: 1rem;
   flex-wrap: wrap;
 
@@ -77,11 +78,31 @@ const Button = styled.button`
   }
 `
 
+const Message = styled.div`
+    position: fixed;
+    top: 20px;  
+    right: 20px;
+    background-color: rgba(0, 162, 255, 0.9);
+    padding: 15px;
+    border-radius: 8px;
+    color: white;
+    z-index: 1000;
+`;
+
 const TourList = () => {
     const {addToCart} = useCart();
+    const [showAddedToCartMessage, setShowAddedToCartMessage] = useState(false);
 
     const scrollToTop = () => {
         window.scrollTo({top: 0, behavior: 'smooth'});
+    };
+
+    const handleAddToCart = (tour) => {
+        addToCart(tour, 1);
+        setShowAddedToCartMessage(true);
+        setTimeout(() => {
+            setShowAddedToCartMessage(false);
+        }, 2000);
     };
 
     return (
@@ -100,13 +121,16 @@ const TourList = () => {
                             <Link to={'/tour/' + tour.id} onClick={scrollToTop}>
                                 <Button>Zobacz Więcej</Button>
                             </Link>
-                            <Button onClick={() => addToCart(tour, 1)}>Dodaj do koszyka</Button>
+                            <Button onClick={() => handleAddToCart(tour)}>Dodaj do koszyka</Button>
                         </Tour>
                     ))}
                 </Wrapper>
+                {showAddedToCartMessage && <Message>Produkt został dodany do koszyka!</Message>}
             </Container>
         </motion.div>
     );
 };
+
+
 
 export default TourList;

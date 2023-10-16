@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import {Products} from '../data';
 import {Link} from 'react-router-dom';
@@ -77,11 +77,31 @@ const Button = styled.button`
   }
 `;
 
+const Message = styled.div`
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: rgba(0, 162, 255, 0.9);
+  padding: 15px;
+  border-radius: 8px;
+  color: white;
+  z-index: 1000;
+`;
+
 const AccessoryList = () => {
     const {addToCart} = useCart();
+    const [showAddedToCartMessage, setShowAddedToCartMessage] = useState(false);
 
     const scrollToTop = () => {
         window.scrollTo({top: 0, behavior: 'smooth'});
+    };
+
+    const handleAddToCart = (accessory) => {
+        addToCart(accessory, 1);
+        setShowAddedToCartMessage(true);
+        setTimeout(() => {
+            setShowAddedToCartMessage(false);
+        }, 2000);
     };
 
     return (
@@ -100,10 +120,11 @@ const AccessoryList = () => {
                             <Link to={"/accessory/" + accessory.id} onClick={scrollToTop}>
                                 <Button>Zobacz Więcej</Button>
                             </Link>
-                            <Button onClick={() => addToCart(accessory, 1)}>Dodaj do koszyka</Button>
+                            <Button onClick={() => handleAddToCart(accessory)}>Dodaj do koszyka</Button>
                         </Accessory>
                     ))}
                 </Wrapper>
+                {showAddedToCartMessage && <Message>Produkt został dodany do koszyka!</Message>}
             </Container>
         </motion.div>
     );

@@ -11,6 +11,10 @@ const Container = styled.div`
   align-items: center;
   background-color: #111111b2;
   margin-top: 8rem;
+
+  @media (max-width: 768px) {
+    margin-top: 8rem;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -21,12 +25,21 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+
+  @media (max-width: 768px) {
+    width: 95%;
+    padding: 1rem;
+  }
 `;
 
 const Title = styled.h1`
   font-size: 36px;
   font-weight: 600;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -37,7 +50,7 @@ const ContentWrapper = styled.div`
   min-height: 90vh;
 
   @media (max-width: 768px) {
-    flex-direction: column;
+    min-height: auto;
   }
 `;
 
@@ -47,8 +60,8 @@ const ContactInfo = styled.div`
   width: 40%;
 
   @media (max-width: 768px) {
-    width: 100%;
-    margin-bottom: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
   }
 `;
 
@@ -56,6 +69,12 @@ const Map = styled.iframe`
   width: 100%;
   height: 300px;
   border: 0;
+  
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 250px;
+  }
 `;
 
 const Form = styled.form`
@@ -64,7 +83,7 @@ const Form = styled.form`
   width: 40%;
 
   @media (max-width: 768px) {
-    width: 100%;
+    align-items: center;
   }
 `;
 
@@ -104,8 +123,12 @@ const SocialMediaWrapper = styled.div`
  position: absolute;
     bottom: 10rem;
     left: 65%;
- 
- 
+
+  @media (max-width: 768px) {
+    position: static;
+    margin-top: 1rem;
+    gap: 2rem;
+  }
 `;
 
 const SocialMediaIcon = styled.a`

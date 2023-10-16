@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 
 const MainContainer = styled.div`
@@ -128,7 +128,7 @@ const LoginToUser = () => {
     const [emailIsValid, setEmailIsValid] = useState(true);
     const [passwordIsValid, setPasswordIsValid] = useState(true);
     const [message, setMessage] = useState(""); // Move this line here
-
+    const navigate = useNavigate();
     const handleEmailChange = (event) => {
         const email = event.target.value;
         const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
@@ -149,6 +149,7 @@ const LoginToUser = () => {
         if (email === 'pjoter@tbattour.com' && password === 'Wycieczkiwkosmos1') {
             console.log('Authenticated');
             setMessage("Witaj użytkowniku, zalogowałeś się na swoje konto.");
+            navigate("/user")
 
         } else {
             setEmailIsValid(false);

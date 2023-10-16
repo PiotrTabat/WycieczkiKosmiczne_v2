@@ -11,6 +11,10 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 8rem;
+
+  @media (max-width: 768px) {
+    margin-top: 4rem;
+  }
 `;
 const Wrapper = styled.div`
   padding-top: 2rem;
@@ -21,6 +25,11 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+
+  @media (max-width: 768px) {
+    width: 95%; 
+    margin-top: 1.5rem;
+  }
 `;
 
 const TourItem = styled.div`
@@ -33,22 +42,45 @@ const TourItem = styled.div`
   border: 1px solid #00a2ff;
   border-radius: 5px;
   height: 4.5rem;
+
+  @media (max-width: 768px) {
+    height: auto; 
+    padding: 0.5rem;
+    flex-direction: column; 
+    align-items: flex-start;
+  }
 `;
 
 const Image = styled.img`
   height: 4rem;
   width: 85px;
   object-fit: cover;
+
+  @media (max-width: 768px) {
+    height: 3rem;
+    width: 60px;
+    margin-bottom: 0.5rem; 
+  }
 `;
 
 const Title = styled.h1`
   font-size: 22px;
   font-weight: 600;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const Price = styled.h1`
   font-size: 22px;
   font-weight: 600;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const Button = styled.button`
@@ -73,6 +105,11 @@ const Button = styled.button`
 
   &:active {
     background-color: #410707;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 0.5rem;
   }
 `;
 
@@ -126,6 +163,11 @@ const MinusButton = styled(Button)`
 const Quantity = styled.h1`
   font-size: 22px;
   font-weight: 600;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const ShoppingCartItems = () => {

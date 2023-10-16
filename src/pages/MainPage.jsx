@@ -21,6 +21,13 @@ const HomePageWrapper = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (max-width: 768px) {
+    background-size: auto 100%;  
+  }
 `;
 
 
@@ -34,6 +41,17 @@ const HomePage = styled.div`
   font-size: 3rem;
   font-weight: 600;
   text-shadow: 0 0 10px #00a2ff;
+  max-width: 90vw;  
+  text-align: center;
+  justify-content: center;
+  
+  
+  @media screen and (max-width: 768px) {
+    padding: 10rem 0 0 0; 
+    font-size: 2rem;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const StyledH1 = styled.h1`
@@ -43,6 +61,11 @@ const StyledH1 = styled.h1`
   margin: 2rem 0;
   font-weight: 600;
   text-shadow: 0 0 10px #00a2ff;
+
+  @media screen and (max-width: 768px) {
+    font-size: 2.5rem;
+    margin: 1rem 0;
+  }
 `;
 
 const MainPage = ({tours, accessories, insurances}) => {

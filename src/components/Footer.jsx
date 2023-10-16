@@ -10,6 +10,12 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: normal;
   color: #b0aeae;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0.5rem;
+  }
 `
 const Left = styled.div`
   flex: 1;
@@ -18,6 +24,12 @@ const Left = styled.div`
   align-items: center;
   text-align: left;
   margin-left: 5rem;
+
+  @media screen and (max-width: 768px) {
+    margin-left: 0;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
 `
 const Center = styled.div`
   flex: 1;
@@ -26,6 +38,12 @@ const Center = styled.div`
   justify-content: center;
   padding:  0  0 2rem 10rem;
   text-align: left;
+
+  @media screen and (max-width: 768px) {
+    padding: 0;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
 `
 const Right = styled.div`
   flex: 1;
@@ -33,6 +51,11 @@ const Right = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: row;
+    gap: 1rem;
+  }
 `
 const Title = styled.h2`
   font-weight: bold;
@@ -40,6 +63,10 @@ const Title = styled.h2`
   margin-bottom: 0.5rem;
   width: 90%;
   text-align: center;
+
+  @media screen and (max-width: 768px) {
+    text-align: center;
+  }
 `
 const Line = styled.p`
   font-size: 14px;
@@ -74,6 +101,13 @@ const Copyright = styled.p`
   line-height: 1.5;
   color: #b0aeae;
   margin-right: 5rem;
+
+  @media screen and (max-width: 768px) {
+    margin-right: 0;
+    text-align: center;
+    width: 100%;
+    padding: 1rem 0;
+  }
 `;
 
 const Footer = () => {

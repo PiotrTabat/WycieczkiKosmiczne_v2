@@ -23,6 +23,8 @@ const Container = styled.div`
   transform: translateY(${({isScrolling}) => (isScrolling ? "0" : "-100%")});
   @media screen and (max-width: 768px) {
     padding: 0.5rem 2rem;
+    background-color: black;
+    opacity: 100%;
   }
 
   &,
