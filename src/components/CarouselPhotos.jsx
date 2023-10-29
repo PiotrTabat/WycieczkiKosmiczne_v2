@@ -47,7 +47,7 @@ const CarouselPhotos = () => {
     return (
         <Container>
             <CarouselWrapper>
-                <Carousel autoPlay interval={3000} infiniteLoop stopOnHover={false}>
+                <Carousel autoPlay interval={3000} infiniteLoop stopOnHover={false} showThumbs={false}>
                     <div>
                         <StyledImage src={galacticImg} alt="Galaktyka"/>
                     </div>

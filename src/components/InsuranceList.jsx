@@ -114,7 +114,7 @@ const InsuranceList = () => {
                 <Wrapper>
                     {Products.filter(product => product.type === 'insurance').map(insurance => (
                         <InsuranceWrapper key={insurance.id}>
-                            <Image src={insurance.img}/>
+                            <Image src={process.env.PUBLIC_URL + '/' + insurance.img} alt={insurance.title} />
                             <Title>{insurance.title}</Title>
                             <Price>Cena: {insurance.price} PLN</Price>
                             <Link to={"/insurance/" + insurance.id} onClick={scrollToTop}>

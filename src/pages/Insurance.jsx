@@ -13,6 +13,10 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 8rem;
+
+  @media (max-width: 768px) {
+    margin-top: 7rem;
+  }
 `
 const Wrapper = styled.div`
   padding: 1rem 4rem;
@@ -25,6 +29,11 @@ const Wrapper = styled.div`
   margin: 10px 0;
   border-radius: 5px;
   border: 1px solid #00a2ff;
+
+  @media (max-width: 768px) {
+    width: 90%;
+    padding: 1rem 2rem;
+  }
 `
 const InsuranceWrapper = styled.div`
   display: flex;
@@ -38,11 +47,20 @@ const Image = styled.img`
   max-height: 450px;
   flex: 1;
   margin-left: 1.5rem;
+
+  @media (max-width: 768px) {
+    max-height: 300px;
+  }
 `
 const Title = styled.h1`
   font-weight: 600;
   font-size: 40px;
   margin-top: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 30px;
+    margin-top: 10px;
+  }
 `
 const Description = styled.div`
   flex: 1;
@@ -55,6 +73,10 @@ const Price = styled.p`
   font-size: 26px;
   font-weight: 500;
   color: #00a2ff;
+
+  @media (max-width: 768px) {
+    font-size: 22px;
+  }
 `
 const Info = styled.p`
   margin-top: 2rem;
@@ -63,6 +85,10 @@ const Info = styled.p`
 const InsuranceDescription = styled.p`
   margin-top: 2rem;
   font-size: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
 `
 const ButtonWrapper = styled.div`
   display: flex;
@@ -141,6 +167,12 @@ const AddToCartButton = styled.button`
     transform: scale(0.95);
     background-color: #002134;
   }
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+    padding: 8px 15px;
+    margin-right: 4rem;
+  }
 `;
 const Insurance = () => {
     const { id } = useParams();
@@ -178,7 +210,7 @@ const Insurance = () => {
                 <Wrapper>
                     {Products.filter((insurance) => insurance.id === id).map((filteredItem) => (
                         <InsuranceWrapper>
-                            <Image src={filteredItem.img} />
+                            <Image src={process.env.PUBLIC_URL + '/' + filteredItem.img} alt={filteredItem.title} />
                             <Description>
                                 <Title>{filteredItem.title}</Title>
                                 <ButtonWrapper>

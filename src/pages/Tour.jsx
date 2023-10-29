@@ -13,6 +13,10 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 8rem;
+
+  @media (max-width: 768px) {
+    margin-top: 7rem;
+  }
 `
 const Wrapper = styled.div`
   padding: 1rem 4rem;
@@ -24,6 +28,11 @@ const Wrapper = styled.div`
   margin: 10px 0;
   border-radius: 5px;
   border: 1px solid #00a2ff;
+
+  @media (max-width: 768px) {
+    width: 90%;
+    padding: 1rem 2rem;
+  }
 `
 const TourWrapper = styled.div`
   display: flex;
@@ -35,11 +44,20 @@ const Image = styled.img`
   max-width: 90%;
   max-height: 450px;
   flex: 1;
+
+  @media (max-width: 768px) {
+    max-height: 300px;
+  }
 `
 const Title = styled.h1`
   font-weight: 600;
   font-size: 40px;
   margin-top: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 30px;
+    margin-top: 10px;
+  }
 `
 const Description = styled.div`
   flex: 1;
@@ -52,15 +70,27 @@ const Price = styled.p`
   font-size: 26px;
   font-weight: 500;
   color: #00a2ff;
+
+  @media (max-width: 768px) {
+    font-size: 22px;
+  }
 `
 const Plan = styled.p`
   margin-top: 2rem;
   font-size: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
 `
 const TourDescription = styled.p`
   margin-top: 2rem;
   font-size: 20px;
   line-height: 1.5;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
 `
 const ButtonWrapper = styled.div`
   display: flex;
@@ -138,6 +168,12 @@ const AddToCartButton = styled.button`
     transform: scale(0.95);
     background-color: #002134;
   }
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+    padding: 8px 15px;
+    margin-right: 4rem;
+  }
 `;
 
 const Tour = () => {
@@ -145,6 +181,7 @@ const Tour = () => {
     const {addToCart} = useCart();
     const navigate = useNavigate();
     const currentIndex = Products.findIndex((product) => product.id === id);
+
 
     const handlePrevious = () => {
         const prevIndex = currentIndex > 0 ? currentIndex - 1 : Products.length - 1;
@@ -159,13 +196,13 @@ const Tour = () => {
         const nextIndex = (currentIndex + 1) % Products.length;
         navigate(`/tour/${Products[nextIndex].id}`);
     };
+
     const scrollToBottom = () => {
         window.scrollTo({
             top: document.body.scrollHeight,
             behavior: 'smooth',
         });
     };
-
 
     return (
         <motion.div
@@ -176,8 +213,8 @@ const Tour = () => {
             <Container>
                 <Wrapper>
                     {Products.filter((tour) => tour.id === id).map((filteredItem) => (
-                        <TourWrapper>
-                            <Image src={filteredItem.img}/>
+                        <TourWrapper key={filteredItem.id}>
+                            <Image src={process.env.PUBLIC_URL + '/' + filteredItem.img} alt={filteredItem.title} />
                             <Description>
                                 <Title>{filteredItem.title}</Title>
                                 <ButtonWrapper>
@@ -187,8 +224,8 @@ const Tour = () => {
                                         <AddToCartButton onClick={() => handleAddToCart(filteredItem)}>
                                             Dodaj do koszyka
                                         </AddToCartButton>
-                                        </ArrowWrapper>
-                                            <ArrowButton onClick={handleNext}>Następna</ArrowButton>
+                                    </ArrowWrapper>
+                                    <ArrowButton onClick={handleNext}>Następna</ArrowButton>
                                 </ButtonWrapper>
                                 <Price>Cena: {filteredItem.price} PLN</Price>
                                 <Plan>
@@ -199,11 +236,11 @@ const Tour = () => {
                                 </TourDescription>
                             </Description>
                         </TourWrapper>
-                        ))}
+                    ))}
                 </Wrapper>
             </Container>
         </motion.div>
-);
+    );
 };
 
 export default Tour;

@@ -2,7 +2,7 @@
   "name": "wycieczki-kosmiczne",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "http://www.t-bat.pl/wycieczki-kosmiczne",
   "dependencies": {
     "@mui/icons-material": "^5.11.16",
     "@testing-library/jest-dom": "^5.16.5",

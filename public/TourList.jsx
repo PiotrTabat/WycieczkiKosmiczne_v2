@@ -115,7 +115,7 @@ const TourList = () => {
                 <Wrapper>
                     {Products.filter((product) => product.type === 'tour').map((tour) => (
                         <Tour key={tour.id}>
-                            <Image src={process.env.PUBLIC_URL + '/' + tour.img} alt={tour.title} />
+                            <Image src={tour.img}/>
                             <Title>{tour.title}</Title>
                             <Price>Cena: {tour.price} PLN</Price>
                             <Link to={'/tour/' + tour.id} onClick={scrollToTop}>
@@ -130,5 +130,7 @@ const TourList = () => {
         </motion.div>
     );
 };
+
+
 
 export default TourList;

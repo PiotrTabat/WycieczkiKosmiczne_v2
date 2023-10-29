@@ -114,7 +114,7 @@ const AccessoryList = () => {
                 <Wrapper>
                     {Products.filter(product => product.type === 'accessory').map((accessory) => (
                         <Accessory key={accessory.id}>
-                            <Image src={accessory.img}/>
+                            <Image src={process.env.PUBLIC_URL + '/' + accessory.img} alt={accessory.title} />
                             <Title>{accessory.title}</Title>
                             <Price>Cena: {accessory.price} PLN</Price>
                             <Link to={"/accessory/" + accessory.id} onClick={scrollToTop}>
